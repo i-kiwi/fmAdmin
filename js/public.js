@@ -1,0 +1,1 @@
+var ip="http://localhost:8080/";// var ip="http://119.253.81.55/";// var ip="http://cxb.mobile.taikang.com/";	
