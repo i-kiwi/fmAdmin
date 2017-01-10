@@ -15,17 +15,21 @@
     }
 }
 
-/* 中等屏幕（桌面显示器，大于等于 992px） */
+
+
+
+
+/* 中等屏幕（桌面显示器，大于等于 992px）
 @media (min-width: 992px) {
     .row div{
         color: blue;
     }
-}
+} */
 
-/* 大屏幕（大桌面显示器，大于等于 1200px） */
+/* 大屏幕（大桌面显示器，大于等于 1200px）
 @media (min-width: 1200px) {
     .row div{
         font-weight: bold;
         color: green;
     }
-}
+}*/

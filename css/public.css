@@ -1,0 +1,8 @@
+html, body, div, ul, li{
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    background-color: #f0f0f0;
+}
