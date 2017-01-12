@@ -39,37 +39,53 @@
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Kiwi</strong>
-                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+                             </span> <span class="text-muted text-xs block"><b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated flipInY m-t-xs">
-                            <li><a href="">Profile</a></li>
-                            <li><a href="">Contacts</a></li>
-                            <li><a href="">Mailbox</a></li>
+                            <li><a href="">账号设置</a></li>
+                            <li><a href="">消息设置</a></li>
+                            <li><a href="">帮助中心</a></li>
                             <li class="divider"></li>
-                            <li><a href="login.html">Logout</a></li>
+                            <li><a href="login.html">退出</a></li>
                         </ul>
                     </div>
                     <div class="logo-element">
                         IN+
                     </div>
                 </li>
-
-
-
-
-
-
-
-
-
                 <li>
-                    <a href=""><i class="fa fa-magic"></i> <span class="nav-label">CSS Animations </span><span class="label label-info pull-right">62</span></a>
+                    <a href=""><i class="fa fa-home"></i> <span class="nav-label">首页</span><span class="label label-info pull-right">62</span></a>
                 </li>
-                <li class="landing_link">
-                    <a target="_blank" href=""><i class="fa fa-star"></i> <span class="nav-label">Landing Page</span> <span class="label label-warning pull-right">NEW</span></a>
+                <li>
+                    <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">添加</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="">入库</a></li>
+                        <li><a href="">图片/视频</a></li>
+                    </ul>
                 </li>
-                <li class="special_link">
-                    <a href=""><i class="fa fa-database"></i> <span class="nav-label">Package</span></a>
+                <li class="active">
+                    <a href="#"><i class="fa fa-globe"></i> <span class="nav-label">库存</span><span class="label label-info pull-right">NEW</span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="">水果</a></li>
+                        <li class="active"><a href="">干果</a></li>
+                    </ul>
                 </li>
+                <li>
+                    <a href=""><i class="fa fa-home"></i> <span class="nav-label">销量</span><span class="label label-info pull-right">62</span></a>
+                </li>
+                <li>
+                    <a href=""><i class="fa fa-home"></i> <span class="nav-label">用户</span><span class="label label-info pull-right">62</span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="">管理员</a></li>
+                        <li><a href="">客户</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href=""><i class="fa fa-home"></i> <span class="nav-label">财务</span><span class="label label-info pull-right">62</span></a>
+                </li>
+                <li>
+                    <a href=""><i class="fa fa-home"></i> <span class="nav-label">关于</span><span class="label label-info pull-right">62</span></a>
+                </li>
+
             </ul>
 
         </div>
@@ -216,61 +232,6 @@
                             <!--</div>-->
                             <div class="ibox-content">
 
-                                <strong>An awesome replacement for JavaScript's alert.</strong>
-
-                                <p>
-                                    SweetAlert automatically centers itself on the page and looks great no matter if
-                                    you're using a desktop computer, mobile or tablet. It's even highly customizeable,
-                                    as you can see below!
-                                    <a href="http://t4t5.github.io/sweetalert/model.html" target="_blank">http://t4t5.github.io/sweetalert/</a>
-
-                                </p>
-
-                                <div class="row text-center">
-
-                                    <div class="col-lg-6 h-100 p-lg">
-                                        <p>A basic sweetalert message</p>
-                                        <button class="btn btn-primary btn-sm demo1">Run example</button>
-                                    </div>
-                                    <div class="col-lg-6 h-100 p-lg">
-                                        <p> A success message! </p>
-                                        <button class="btn btn-success btn-sm demo2">Run example</button>
-                                    </div>
-                                    <div class="col-lg-6 h-100 p-lg">
-                                        <p>A warning message, with a function attached to the "Confirm"-button...</p>
-                                        <button class="btn btn-warning btn-sm demo3">Run example</button>
-                                    </div>
-                                    <div class="col-lg-6 h-100 p-lg">
-                                        <p> ... and by passing a parameter, you can execute something else for "Cancel". </p>
-                                        <button class="btn btn-danger btn-sm demo4">Run example</button>
-                                    </div>
-
-
-
-
-
-                                </div>
-                                <div class="m-t-md">
-                                    <p>
-                                        You can easy add sweet alert in your script by adding code (example from warning button):
-                                    </p>
-    <pre>
-$('.demo3').click(function () {
-    swal({
-        title: "Are you sure?",
-        text: "You will not be able to recover this imaginary file!",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#DD6B55",
-        confirmButtonText: "Yes, delete it!",
-        closeOnConfirm: false
-    }, function () {
-        swal("Deleted!", "Your imaginary file has been deleted.", "success");
-    });
-});</pre>
-                                </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -298,91 +259,21 @@ $('.demo3').click(function () {
     <!-- Custom and plugin javascript -->
     <script src="../js/inspinia.js"></script>
     <script src="../js/plugins/pace/pace.min.js"></script>
-    <script src="../js/public.js"/>
 
     <!-- Sweet alert -->
     <script src="../js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="../js/public.js"></script>
 
-<script>
-    <!--加载导航栏-->
-    $("#side-menu li:first").after('        <li>\
-        <a href=""><i class="fa fa-magic"></i> <span class="nav-label">首页</span><span class="label label-info pull-right">62</span></a>\
-        </li><li>\
-            <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">库存</span><span class="fa arrow"></span></a>\
-            <ul class="nav nav-second-level">\
-            <li><a href="search_results.html">Search results</a></li>\
-        <li><a href="lockscreen.html">Lockscreen</a></li>\
-            <li><a href="invoice.html">Invoice</a></li>\
-            </ul>\
-            </li>\
-            <li class="active">\
-            <a href="#"><i class="fa fa-globe"></i> <span class="nav-label">Miscellaneous</span><span class="label label-info pull-right">NEW</span></a>\
-            <ul class="nav nav-second-level">\
-            <li><a href="timeline_2.html">Timeline v.2</a></li>\
-        <li><a href="diff.html">Diff</a></li>\
-            <li class="active"><a href="model.html">Sweet alert</a></li>\
-        <li><a href="idle_timer.html">Idle timer</a></li>\
-        <li><a href="spinners.html">Spinners</a></li>\
-            </ul>\
-        </li>');
+    <script>
 
-    $(document).ready(function () {
-
-        $('.demo1').click(function(){
-            swal({
-                title: "Welcome in Alerts",
-                text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            });
+        $(document).ready(function () {
+            function fillContent(data) {
+                $(".ibox-content").html(data);
+            }
+            send(localIp+"fmAdmin/page/temp.html","",fillContent);
         });
 
-        $('.demo2').click(function(){
-            swal({
-                title: "Good job!",
-                text: "You clicked the button!",
-                type: "success"
-            });
-        });
-
-        $('.demo3').click(function () {
-            swal({
-                title: "Are you sure?",
-                text: "You will not be able to recover this imaginary file!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Yes, delete it!",
-                closeOnConfirm: false
-            }, function () {
-                swal("Deleted!", "Your imaginary file has been deleted.", "success");
-            });
-        });
-
-        $('.demo4').click(function () {
-            swal({
-                        title: "Are you sure?",
-                        text: "Your will not be able to recover this imaginary file!",
-                        type: "warning",
-                        showCancelButton: true,
-                        confirmButtonColor: "#DD6B55",
-                        confirmButtonText: "Yes, delete it!",
-                        cancelButtonText: "No, cancel plx!",
-                        closeOnConfirm: false,
-                        closeOnCancel: false },
-                    function (isConfirm) {
-                        if (isConfirm) {
-                            swal("Deleted!", "Your imaginary file has been deleted.", "success");
-                        } else {
-                            swal("Cancelled", "Your imaginary file is safe :)", "error");
-                        }
-                    });
-        });
-
-
-
-
-    });
-
-</script>
+    </script>
 
 
 </body>

@@ -30,7 +30,7 @@
                 <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
             </p>
             <p>Login in. To see it in action.</p>
-            <form class="m-t" role="form" action="model.html">
+            <form class="m-t" role="form">
                 <div class="form-group">
                     <input type="email" class="form-control" placeholder="Username" id="username" required="">
                 </div>
@@ -57,9 +57,12 @@
                 //ajax
                 var result = "SUCCESS"
                 if(result == "SUCCESS"){
-                    sessionStorage.username = "admin";
-                    sessionStorage.username.aa = "qwe";
-                    window.location.href = "model.html";
+                    function fc() {
+                        sessionStorage.username = "admin";
+                        sessionStorage.username.aa = "qwe";
+                        window.location.href = "index.html";
+                    }
+                    send("http://localhost:8080/fmAdmin/page/index.html",JSON.stringify({"a":"b"}),fc);
                 }
             }
         }
