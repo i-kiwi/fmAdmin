@@ -32,7 +32,7 @@
 
     <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
-            <ul class="nav metismenu" id="side-menu">
+            <ul class="nav metismenu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
                             <img alt="image" class="img-circle headImg m-b-sm" src="../img/i1.jpg" />
@@ -52,30 +52,32 @@
                         FM/
                     </div>
                 </li>
+            </ul>
+            <ul class="nav metismenu" id="side-menu">
                 <li class="active">
-                    <a href=""><i class="fa fa-home"></i> <span class="nav-label">首页</span><span class="label label-info pull-right">62</span></a>
+                    <a><i class="fa fa-home"></i> <span class="nav-label">首页</span><span class="label label-info pull-right">62</span></a>
                 </li>
                 <li>
-                    <a href=""><i class="fa fa-area-chart"></i> <span class="nav-label">资源</span></a>
+                    <a><i class="fa fa-area-chart"></i> <span class="nav-label">资源</span></a>
                 </li>
                 <li>
-                    <a href=""><i class="fa fa-cube"></i> <span class="nav-label">库存</span><span class="badge badge-danger pull-right">23</span></a>
+                    <a><i class="fa fa-cube"></i> <span class="nav-label">库存</span><span class="badge badge-danger pull-right">23</span></a>
                 </li>
                 <li>
-                    <a href=""><i class="fa fa-file-text"></i> <span class="nav-label">订单</span></a>
+                    <a><i class="fa fa-file-text"></i> <span class="nav-label">订单</span></a>
                 </li>
                 <li>
-                    <a href=""><i class="fa fa-user"></i> <span class="nav-label">用户</span><span class="badge badge-primary pull-right">20</span></a>
+                    <a><i class="fa fa-user"></i> <span class="nav-label">用户</span><span class="badge badge-primary pull-right">20</span></a>
                     <ul class="nav nav-second-level">
-                        <li><a href="">管理员</a></li>
-                        <li><a href="">客户</a></li>
+                        <li><a>管理员</a></li>
+                        <li><a>客户</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href=""><i class="fa fa-rmb"></i> <span class="nav-label">财务</span></a>
+                    <a><i class="fa fa-rmb"></i> <span class="nav-label">财务</span></a>
                 </li>
                 <li>
-                    <a href=""><i class="fa fa-star"></i> <span class="nav-label">关于</span></a>
+                    <a><i class="fa fa-star"></i> <span class="nav-label">关于</span></a>
                 </li>
 
             </ul>
@@ -259,6 +261,16 @@
     <script>
 
         $(document).ready(function () {
+            var navObj = $("#side-menu li");
+            navObj.click(function(){
+                alert($(this).parent().html());
+                alert($(this).html());
+                navObj.removeClass("active");
+                $(this).addClass("active");
+            });
+
+
+
             function fillContent(data) {
                 $(".ibox-content").html(data);
             }
