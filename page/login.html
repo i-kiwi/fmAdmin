@@ -50,19 +50,19 @@
     <!-- Mainly scripts -->
     <script src="../js/jquery-2.1.1.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/public.js"></script>
+    <script src="../js/common.js"></script>
     <script>
         function login(){
             if($("#username").val() && $("#password").val()){
                 //ajax
                 var result = "SUCCESS"
                 if(result == "SUCCESS"){
-                    function fc() {
+                    function suc() {
                         sessionStorage.username = "admin";
                         sessionStorage.username.aa = "qwe";
                         window.location.href = "index.html";
                     }
-                    send("http://localhost:8080/fmAdmin/page/index.html",JSON.stringify({"a":"b"}),fc);
+                    ajaxLoad(localIp+"fmAdmin/page/login.html","","post","text",suc,null,null);
                 }
             }
         }

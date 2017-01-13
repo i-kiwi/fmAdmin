@@ -32,7 +32,7 @@
 
     <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
-            <ul class="nav metismenu">
+            <ul class="nav metismenu"  id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
                             <img alt="image" class="img-circle headImg m-b-sm" src="../img/i1.jpg" />
@@ -41,9 +41,9 @@
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Kiwi</strong>
                              </span> <span class="text-muted text-xs block"><b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated flipInY m-t-xs">
-                            <li><a href="">账号设置</a></li>
-                            <li><a href="">消息设置</a></li>
-                            <li><a href="">帮助中心</a></li>
+                            <li><input type="hidden" value="accountSetting"/><a>账号设置</a></li>
+                            <li><input type="hidden" value="messageSetting"/><a>消息设置</a></li>
+                            <li><input type="hidden" value="help"/><a>帮助中心</a></li>
                             <li class="divider"></li>
                             <li><a href="login.html">退出</a></li>
                         </ul>
@@ -52,32 +52,49 @@
                         FM/
                     </div>
                 </li>
-            </ul>
-            <ul class="nav metismenu" id="side-menu">
                 <li class="active">
-                    <a><i class="fa fa-home"></i> <span class="nav-label">首页</span><span class="label label-info pull-right">62</span></a>
-                </li>
-                <li>
-                    <a><i class="fa fa-area-chart"></i> <span class="nav-label">资源</span></a>
-                </li>
-                <li>
-                    <a><i class="fa fa-cube"></i> <span class="nav-label">库存</span><span class="badge badge-danger pull-right">23</span></a>
-                </li>
-                <li>
-                    <a><i class="fa fa-file-text"></i> <span class="nav-label">订单</span></a>
-                </li>
-                <li>
-                    <a><i class="fa fa-user"></i> <span class="nav-label">用户</span><span class="badge badge-primary pull-right">20</span></a>
+                    <a><i class="fa fa-home"></i><span class="nav-label">首页</span><span class="label label-info pull-right">62</span></a>
+                    <input type="hidden" value="home"/>
                     <ul class="nav nav-second-level">
-                        <li><a>管理员</a></li>
-                        <li><a>客户</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a><i class="fa fa-rmb"></i> <span class="nav-label">财务</span></a>
+                    <a><i class="fa fa-area-chart"></i><span class="nav-label">资源</span></a>
+                    <input type="hidden" value="resource"/>
+                    <ul class="nav nav-second-level">
+                    </ul>
+                </li>
+                <li>
+                    <a><i class="fa fa-cube"></i><span class="nav-label">库存</span><span class="badge badge-danger pull-right">23</span></a>
+                    <input type="hidden" value="store"/>
+                    <ul class="nav nav-second-level">
+                    </ul>
+                </li>
+                <li>
+                    <a><i class="fa fa-file-text"></i><span class="nav-label">订单</span></a>
+                    <input type="hidden" value="order"/>
+                    <ul class="nav nav-second-level">
+                    </ul>
+                </li>
+                <li>
+                    <a><i class="fa fa-user"></i><span class="nav-label">用户</span><span class="badge badge-primary pull-right">20</span></a>
+                    <ul class="nav nav-second-level">
+                        <li><input type="hidden" value="manager"/><a>管理员</a></li>
+                        <li><input type="hidden" value="guest"/><a>客户</a></li>
+                        <li><input type="hidden" value="driver"/><a>骑手</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a><i class="fa fa-rmb"></i><span class="nav-label">财务</span></a>
+                    <input type="hidden" value="account"/>
+                    <ul class="nav nav-second-level">
+                    </ul>
                 </li>
                 <li>
                     <a><i class="fa fa-star"></i> <span class="nav-label">关于</span></a>
+                    <input type="hidden" value="about"/>
+                    <ul class="nav nav-second-level">
+                    </ul>
                 </li>
 
             </ul>
@@ -256,17 +273,18 @@
 
     <!-- Sweet alert -->
     <script src="../js/plugins/sweetalert/sweetalert.min.js"></script>
-    <script src="../js/public.js"></script>
+    <script src="../js/common.js"></script>
 
     <script>
 
         $(document).ready(function () {
-            var navObj = $("#side-menu li");
-            navObj.click(function(){
-                alert($(this).parent().html());
-                alert($(this).html());
-                navObj.removeClass("active");
-                $(this).addClass("active");
+            $("#side-menu li").click(function(){
+                if($(this).children("input").val()){
+                    $("#side-menu li").not($(this).parent().parent()).removeClass("active");
+                    $(this).addClass("active");
+
+                    console.log($(this).children("input").val());
+                }
             });
 
 
@@ -274,7 +292,10 @@
             function fillContent(data) {
                 $(".ibox-content").html(data);
             }
-            send(localIp+"fmAdmin/page/temp.html","",fillContent);
+            function e() {
+            }
+//            send(localIp+"fmAdmin/page/temp.html","",fillContent);
+            ajaxLoad(localIp+"fmAdmin/page/temp.html","","post","text",fillContent,e,null);
         });
 
     </script>
