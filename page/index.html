@@ -52,7 +52,7 @@
                         FM/
                     </div>
                 </li>
-                <li class="active">
+                <li>
                     <a><i class="fa fa-home"></i><span class="nav-label">首页</span><span class="label label-info pull-right">62</span></a>
                     <input type="hidden" value="home"/>
                     <ul class="nav nav-second-level">
@@ -79,9 +79,9 @@
                 <li>
                     <a><i class="fa fa-user"></i><span class="nav-label">用户</span><span class="badge badge-primary pull-right">20</span></a>
                     <ul class="nav nav-second-level">
-                        <li><input type="hidden" value="manager"/><a>管理员</a></li>
-                        <li><input type="hidden" value="guest"/><a>客户</a></li>
-                        <li><input type="hidden" value="driver"/><a>骑手</a></li>
+                        <li><input type="hidden" value="manager"/><a><span>管理员</span></a></li>
+                        <li><input type="hidden" value="guest"/><a><span>客户</span></a></li>
+                        <li><input type="hidden" value="driver"/><a><span>骑手</span></a></li>
                     </ul>
                 </li>
                 <li>
@@ -91,7 +91,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a><i class="fa fa-star"></i> <span class="nav-label">关于</span></a>
+                    <a><i class="fa fa-star"></i><span class="nav-label">关于</span></a>
                     <input type="hidden" value="about"/>
                     <ul class="nav nav-second-level">
                     </ul>
@@ -180,7 +180,7 @@
                         <!--</li>-->
                         <!--<li class="divider"></li>-->
                         <!--<li>-->
-                            <!--<a href="profile.html">-->
+                            <!--<a href="">-->
                                 <!--<div>-->
                                     <!--<i class="fa fa-twitter fa-fw"></i> 3 New Followers-->
                                     <!--<span class="pull-right text-muted small">12 minutes ago</span>-->
@@ -219,11 +219,11 @@
         </nav>
         </div>
             <div class="row wrapper border-bottom white-bg page-heading">
-                <div class="col-lg-10">
+                <div class="page-title col-lg-10">
                     <h2>Sweet Alert</h2>
                     <ol class="breadcrumb">
                         <li>
-                            <a href="index.html">Home</a>
+                            <a href="">Home</a>
                         </li>
                         <li>
                             <a>Miscellaneous</a>
@@ -234,19 +234,9 @@
                     </ol>
                 </div>
             </div>
-            <div class="wrapper wrapper-content  animated fadeInRight">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="ibox ">
-                            <!--<div class="ibox-title">-->
-                            <!--<h5>Sweet Alert</h5>-->
-                            <!--</div>-->
-                            <div class="ibox-content">
+            <div class="wrapper wrapper-content animated fadeInRight">
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
             <div class="footer">
                 <div class="pull-right">
@@ -276,26 +266,57 @@
     <script src="../js/common.js"></script>
 
     <script>
+        function fillContent(data) {
+            /*填充content*/
+            $(".wrapper-content").html(data);
 
-        $(document).ready(function () {
-            $("#side-menu li").click(function(){
-                if($(this).children("input").val()){
-                    $("#side-menu li").not($(this).parent().parent()).removeClass("active");
+
+            /*动画优化*/
+            $("#side-menu li").removeClass("active");
+            $.each($("#side-menu li"),function(){
+                if($(this).children("input").val() == sessionStorage.currentPath){
                     $(this).addClass("active");
 
-                    console.log($(this).children("input").val());
+                    var currentPathName = $(this).children("a").children("span:first").text();
+                    var currentParentPathName = $(this).parent().parent().children("a").children("span:first").text();
+                    /*标题部分*/
+                    sessionStorage.currentPathName = currentPathName;
+                    sessionStorage.currentPathName.parentPathName = currentParentPathName;
+                    $(".page-title h2").text(currentPathName);
+                    var tempOlObj = $(".page-title .breadcrumb");
+                    tempOlObj.html("");
+                    if(sessionStorage.currentPath != "home"){
+                        if(sessionStorage.currentPathName)
+                            tempOlObj.html("<li class='active'>"+sessionStorage.currentPathName+"</li>");
+                        if(sessionStorage.currentPathName.parentPathName)
+                            tempOlObj.html("<li>"+sessionStorage.currentPathName.parentPathName+"</a></li>" + tempOlObj.html());
+                    }
+                    tempOlObj.html("<li> Home</i></li>" + tempOlObj.html());
+                }
+            })
+        }
+        function awayFunc() {
+            /*动画优化*/
+            $(".wrapper-content").removeClass("animated fadeOutRight").addClass("animated fadeInRight");
+        }
+
+        $(document).ready(function () {
+            function jump(targetPath, flag) {
+                if(flag || sessionStorage.currentPath != targetPath){
+                    $(".wrapper-content").removeClass("animated fadeInRight").addClass("animated fadeOutRight");
+                    ajaxLoad(localIp+"fmAdmin/page/"+targetPath+".html","","post","text",fillContent,null,awayFunc);
+                    sessionStorage.currentPath = targetPath;
+                }
+            }
+
+            $("#side-menu li").click(function(){
+                var targetPath = $(this).children("input").val();
+                if(targetPath){
+                    jump(targetPath);
                 }
             });
 
-
-
-            function fillContent(data) {
-                $(".ibox-content").html(data);
-            }
-            function e() {
-            }
-//            send(localIp+"fmAdmin/page/temp.html","",fillContent);
-            ajaxLoad(localIp+"fmAdmin/page/temp.html","","post","text",fillContent,e,null);
+            jump(sessionStorage.currentPath?sessionStorage.currentPath:"home", true);
         });
 
     </script>

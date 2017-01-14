@@ -20,7 +20,7 @@ var publicUtil = {
       var loaderStr='<div class="z_loader">\
                 <div class="z_loadercon">\
                   <div class="z_loadicon"><b class="circle"></b></div>\
-                  <p>努力加载中...</p>\
+                  <p></p>\
                 </div>\
               </div>';
       $("body").append(loaderStr);
