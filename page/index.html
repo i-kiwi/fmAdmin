@@ -277,39 +277,51 @@
                 if($(this).children("input").val() == sessionStorage.currentPath){
                     $(this).addClass("active");
 
-                    var currentPathName = $(this).children("a").children("span:first").text();
-                    var currentParentPathName = $(this).parent().parent().children("a").children("span:first").text();
-                    /*标题部分*/
-                    sessionStorage.currentPathName = currentPathName;
-                    sessionStorage.currentPathName.parentPathName = currentParentPathName;
-                    $(".page-title h2").text(currentPathName);
-                    var tempOlObj = $(".page-title .breadcrumb");
-                    tempOlObj.html("");
-                    if(sessionStorage.currentPath != "home"){
-                        if(sessionStorage.currentPathName)
-                            tempOlObj.html("<li class='active'>"+sessionStorage.currentPathName+"</li>");
-                        if(sessionStorage.currentPathName.parentPathName)
-                            tempOlObj.html("<li>"+sessionStorage.currentPathName.parentPathName+"</a></li>" + tempOlObj.html());
-                    }
-                    tempOlObj.html("<li> Home</i></li>" + tempOlObj.html());
+//                    var currentPathName = $(this).children("a").children("span:first").text();
+//                    if(currentPathName){
+//                        var parentPathName = $(this).parent().parent().children("a").children("span:first").text();
+//                        sessionStorage.currentPathName = currentPathName;
+//                        sessionStorage.parentPathName = parentPathName;
+//                        /*标题部分*/
+//                        fillTitle(currentPathName, parentPathName);
+//                    }else{
+//                        fillTitle(sessionStorage.currentPathName, sessionStorage.parentPathName);
+//                    }
                 }
             })
+
+            /*标题*/
+            fillTitle(sessionStorage.currentPathName, sessionStorage.parentPathName);
+
         }
         function awayFunc() {
             /*动画优化*/
             $(".wrapper-content").removeClass("animated fadeOutRight").addClass("animated fadeInRight");
         }
-
-        $(document).ready(function () {
-            function jump(targetPath, flag) {
-                if(flag || sessionStorage.currentPath != targetPath){
-                    $(".wrapper-content").removeClass("animated fadeInRight").addClass("animated fadeOutRight");
-                    ajaxLoad(localIp+"fmAdmin/page/"+targetPath+".html","","post","text",fillContent,null,awayFunc);
-                    sessionStorage.currentPath = targetPath;
-                }
+        function fillTitle(currentPathName, parentPathName) {
+            $(".page-title h2").text(currentPathName);
+            var tempOlObj = $(".page-title .breadcrumb");
+            tempOlObj.html("");
+            if(sessionStorage.currentPath != "home"){
+                if(currentPathName)
+                    tempOlObj.html("<li style='font-weight: bold'>"+currentPathName+"</li>");
+                if(parentPathName)
+                    tempOlObj.html("<li>"+parentPathName+"</a></li>" + tempOlObj.html());
             }
+            tempOlObj.html("<li> Home</i></li>" + tempOlObj.html());
+        }
+
+        function jump(targetPath, flag) {
+            if(flag || sessionStorage.currentPath != targetPath){
+                $(".wrapper-content").removeClass("animated fadeInRight").addClass("animated fadeOutRight");
+                ajaxLoad(localIp+"fmAdmin/page/"+targetPath+".html","","post","text",fillContent,null,awayFunc);
+                sessionStorage.currentPath = targetPath;
+            }
+        }
+        $(document).ready(function () {
 
             $("#side-menu li").click(function(){
+
                 var targetPath = $(this).children("input").val();
                 if(targetPath){
                     jump(targetPath);

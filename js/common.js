@@ -1,5 +1,5 @@
-var localIp="http://localhost:8080/";
-// var localIp="http://192.168.99.224:8080/";
+// var localIp="http://localhost:8080/";
+var localIp="http://192.168.99.224:8080/";
 var prodName = "";  //接口加密字段prodName值
 
 /*公用功能*/
@@ -63,7 +63,7 @@ var publicUtil = {
 
 $(function () {
     if(window.location.href.indexOf("login.html") == -1){
-        if(sessionStorage.username){
+        if(sessionStorage.getItem("username")){
         }else{
             window.location.href = "login.html";
         }

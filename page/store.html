@@ -12,6 +12,10 @@
     .store-count{
         font-size:18px;
     }
+    .product-desc .note{
+        height:30px;
+        overflow: hidden;
+    }
     .store-lost{
         filter:alpha(opacity=30);
         -moz-opacity:0.3;
@@ -69,15 +73,16 @@
                     </span>
                     <div class="m-t-n-sm m-b-xs"><i class="fa fa-cube"></i><span class="store-count">600</span></div>
 
-                    <a href="#" class="product-name">花村苹果</a>
+                    <div><a class="product-name">花村苹果</a></div>
+                    <input type="hidden" value="239jesdnk3b2lj2" />
 
 
 
-                    <div class="small m-t-xs">
+                    <div class="small m-t-xs note">
                         Many desktop publishing packages and web page editors now.
                     </div>
-                    <div class="m-t text-righ">
-                        <a href="#" class="btn btn-xs btn-outline btn-primary">详细 <i class="fa fa-long-arrow-right"></i> </a>
+                    <div class="m-t">
+                        <a class="btn btn-xs btn-outline btn-primary">详细 <i class="fa fa-long-arrow-right"></i> </a>
                     </div>
                     <div>
                         <small class="pull-right m-t-n"><i class="fa fa-edit"> 15.01.2017</i></small>
@@ -262,3 +267,19 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        sessionStorage.currentPathName = "库存";
+        sessionStorage.parentPathName = "";
+
+        $(".store-list a").click(function () {
+    //        alert($(this).parent().parent().children("input").val());
+
+            sessionStorage.parentPathName = "aslj"
+            sessionStorage.currentPathName = "apple";
+            fillTitle();
+            jump("store_detail");
+        });
+    })
+</script>

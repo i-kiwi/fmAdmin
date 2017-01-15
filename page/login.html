@@ -58,8 +58,7 @@
                 var result = "SUCCESS"
                 if(result == "SUCCESS"){
                     function suc() {
-                        sessionStorage.username = "admin";
-                        sessionStorage.username.aa = "qwe";
+                        sessionStorage.setItem("username","admin");
                         window.location.href = "index.html";
                     }
                     ajaxLoad(localIp+"fmAdmin/page/login.html","","post","text",suc,null,null);
