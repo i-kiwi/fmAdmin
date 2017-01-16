@@ -1,6 +1,27 @@
 
 <link href="../css/plugins/slick/slick.css" rel="stylesheet">
 <link href="../css/plugins/slick/slick-theme.css" rel="stylesheet">
+<style type="text/css">
+    .small-pic div{
+        height:70px;
+    }
+    .metrics{
+        height:130px;
+    }
+    .progress{
+        /*background-color:#CCC;*/
+        border:1px solid #5bc0de;
+    }
+    .progress-bar{
+        background-color:#5bc0de;
+    }
+    .addPicBtn{
+        background-color:#5bc0de;
+        color:#fff;
+    }
+</style>
+
+
 
 <div class="row">
     <div class="col-lg-12">
@@ -9,14 +30,13 @@
             <div class="ibox-content">
 
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-5 m-t-lg">
 
 
                         <div class="product-images">
 
                             <div>
-                                <div class="image-imitation">
-                                    [IMAGE 1]
+                                <div class="image-imitation" style="background: url('../img/i.png') no-repeat center;">
                                 </div>
                             </div>
                             <div>
@@ -25,9 +45,7 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="image-imitation">
-                                    [IMAGE 3]
-                                </div>
+                                <video src="../img/mp4/testMp4.mp4" controls="controls"></video>
                             </div>
 
 
@@ -37,43 +55,72 @@
                     <div class="col-md-7">
 
                         <h2 class="font-bold m-b-xs">
-                            Desktop publishing software
+                            <span class="editBtn" data-name="name">Desktop publishing software</span>
                         </h2>
-                        <small>Many desktop publishing packages and web page editors now.</small>
+                        <small class="editBtn" data-name="desc">Many desktop publishing packages and web page editors now.</small>
                         <hr>
                         <div>
-                            <button class="btn btn-primary pull-right">Add to cart</button>
-                            <h1 class="product-main-price">$406,602 <small class="text-muted">Exclude Tax</small> </h1>
+                            <h1 class="product-main-price">
+                                <i class="fa fa-rmb">&nbsp;</i>
+                                <span class="editBtn" data-name="price">406,602</span>
+                                <s>(405,602)</s>
+                                <small class="text-muted">元&nbsp;/&nbsp;<span class="editBtn" data-name="unit"><b>斤</b></span></small>
+
+                            </h1>
                         </div>
                         <hr>
-                        <h4>Product description</h4>
+                        <div>
+                            <div class="row m-l-sm">
+                                <div class="col-md-9">
+                                    <div class="row small-pic">
+                                        <div class="col-md-2 col-xs-4 t-border m-r-sm m-b-xs m-t-xs">
 
-                        <div class="small text-muted">
-                            It is a long established fact that a reader will be distracted by the readable
-                            content of a page when looking at its layout. The point of using Lorem Ipsum is
-                            that it has a more-or-less normal distribution of letters, as opposed to using
-                            'Content here, content here', making it look like readable English.
-                            <br/>
-                            <br/>
-                            There are many variations of passages of Lorem Ipsum available, but the majority
-                            have suffered alteration in some form, by injected humour, or randomised words
-                            which don't look even slightly believable.
+                                        </div>
+                                        <div class="col-md-2 col-xs-4 t-border m-r-sm m-b-xs m-t-xs">
+
+                                        </div>
+                                        <div class="col-md-2 col-xs-4 t-border m-r-sm m-b-xs m-t-xs">
+
+                                        </div>
+                                        <div class="col-md-2 col-xs-4 t-border m-r-sm m-b-xs m-t-xs">
+
+                                        </div>
+                                        <div class="col-md-2 col-xs-4 t-border m-r-sm m-b-xs m-t-xs">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <button class="btn addPicBtn">Add picture</button>
+                                </div>
+                            </div>
                         </div>
-                        <dl class="dl-horizontal m-t-md small">
-                            <dt>Description lists</dt>
-                            <dd>A description list is perfect for defining terms.</dd>
-                            <dt>Euismod</dt>
-                            <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-                            <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-                            <dt>Malesuada porta</dt>
-                            <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-                            <dt>Felis euismod semper eget</dt>
-                            <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
-                        </dl>
+                        <hr>
+
+
+
+                        <div class="row">
+                            <div class="well col-lg-5 m-l-md metrics">
+                                <h5>剩余</h5>
+                                <h2><span>3210</span>&nbsp;<span>斤</span><i class="fa fa-edit pull-right"></i></h2>
+
+                                <div class="progress progress-mini">
+                                    <div style="width: 68%;" class="progress-bar"></div>
+                                </div>
+
+                                <div class="m-t-sm small">上次添加时间 1月16日  4:32 pm.</div>
+                            </div>
+                            <div class="well col-lg-5 m-l-md metrics">
+                                <h5>月销图</h5>
+                                <div id="sparkline"><canvas width="211" height="60" style="display: inline-block; width: 211px; height: 60px; vertical-align: top;"></canvas></div>
+                            </div>
+                        </div>
+
+                        <hr>
                         <div class="text-right">
                             <div class="btn-group">
                                 <button class="btn btn-white btn-sm"><i class="fa fa-star"></i> Add to wishlist </button>
-                                <button class="btn btn-white btn-sm"><i class="fa fa-envelope"></i> Contact with author </button>
+                                <button class="btn btn-white btn-sm"><i class="fa fa-times"></i> 设置为禁售 </button>
                             </div>
                         </div>
 
@@ -95,6 +142,91 @@
 </div>
 
 
+
+<div class="ibox-content" id="ibox-content">
+    <div id="vertical-timeline" class="vertical-container dark-timeline">
+        <div class="vertical-timeline-block">
+            <div class="vertical-timeline-icon navy-bg">
+                <i class="fa fa-apple"></i>
+            </div>
+
+            <div class="vertical-timeline-content">
+                <h2>Meeting</h2>
+                <p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the sale.
+                </p>
+                <a href="#" class="btn btn-sm btn-primary"> More info</a>
+                <span class="vertical-date">Today<br><small>Dec 24</small></span>
+            </div>
+        </div>
+
+        <div class="vertical-timeline-block">
+            <div class="vertical-timeline-icon blue-bg">
+                <i class="fa fa-file-text"></i>
+            </div>
+
+            <div class="vertical-timeline-content">
+                <h2>Send documents to Mike</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
+                <a href="#" class="btn btn-sm btn-success"> Download document </a>
+                <span class="vertical-date">
+                                        Today <br>
+                                        <small>Dec 24</small>
+                                    </span>
+            </div>
+        </div>
+
+        <div class="vertical-timeline-block">
+            <div class="vertical-timeline-icon lazur-bg">
+                <i class="fa fa-coffee"></i>
+            </div>
+
+            <div class="vertical-timeline-content">
+                <h2>Coffee Break</h2>
+                <p>Go to shop and find some products. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's. </p>
+                <a href="#" class="btn btn-sm btn-info">Read more</a>
+                <span class="vertical-date"> Yesterday <br><small>Dec 23</small></span>
+            </div>
+        </div>
+
+        <div class="vertical-timeline-block">
+            <div class="vertical-timeline-icon yellow-bg">
+                <i class="fa fa-phone"></i>
+            </div>
+
+            <div class="vertical-timeline-content">
+                <h2>Phone with Jeronimo</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
+                <span class="vertical-date">Yesterday <br><small>Dec 23</small></span>
+            </div>
+        </div>
+
+        <div class="vertical-timeline-block">
+            <div class="vertical-timeline-icon lazur-bg">
+                <i class="fa fa-user-md"></i>
+            </div>
+
+            <div class="vertical-timeline-content">
+                <h2>Go to the doctor dr Smith</h2>
+                <p>Find some issue and go to doctor. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. </p>
+                <span class="vertical-date">Yesterday <br><small>Dec 23</small></span>
+            </div>
+        </div>
+
+        <div class="vertical-timeline-block">
+            <div class="vertical-timeline-icon navy-bg">
+                <i class="fa fa-comments"></i>
+            </div>
+
+            <div class="vertical-timeline-content">
+                <h2>Chat with Monica and Sandra</h2>
+                <p>Web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). </p>
+                <span class="vertical-date">Yesterday <br><small>Dec 23</small></span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
 <!-- Custom and plugin javascript -->
 <script src="../js/inspinia.js"></script>
 <script src="../js/plugins/pace/pace.min.js"></script>
@@ -103,16 +235,46 @@
 <script src="../js/plugins/slick/slick.min.js"></script>
 
 
+
+<!-- Sparkline -->
+<script src="../js/plugins/sparkline/jquery.sparkline.min.js"></script>
+
 <script>
     $(document).ready(function(){
         sessionStorage.currentPathName = "花村苹果";
         sessionStorage.parentPathName = "库存";
+
+        $(".editBtn").click(function(){
+            alert($(this).attr("data-name"));
+        });
 
 
         $('.product-images').slick({
             dots: true
         });
 
+
+        var sparklineCharts = function(){
+            $("#sparkline").sparkline([74, 43, 23, 55, 54, 32, 24, 12], {
+                type: 'line',
+                width: '100%',
+                height: '60',
+                lineColor: '#d9534f',
+                fillColor: "#ffffff"
+            });
+        };
+
+        var sparkResize;
+
+        $(window).resize(function(e) {
+            clearTimeout(sparkResize);
+            sparkResize = setTimeout(sparklineCharts, 500);
+        });
+
+        sparklineCharts();
+
+
     });
+
 
 </script>

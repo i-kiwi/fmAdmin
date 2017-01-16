@@ -1,5 +1,5 @@
-// var localIp="http://localhost:8080/";
-var localIp="http://192.168.99.224:8080/";
+var localIp="http://localhost:8080/";
+// var localIp="http://192.168.99.224:8080/";
 var prodName = "";  //接口加密字段prodName值
 
 /*公用功能*/

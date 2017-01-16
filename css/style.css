@@ -3980,6 +3980,9 @@ a.close-canvas-menu:hover {
   height: 200px;
   padding-top: 70px;
 }
+.t-border{
+  border:1px solid black;
+}
 /* MARGINS & PADDINGS */
 .p-xxs {
   padding: 5px;
