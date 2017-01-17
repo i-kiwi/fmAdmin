@@ -2,22 +2,29 @@
 <link href="../css/plugins/slick/slick.css" rel="stylesheet">
 <link href="../css/plugins/slick/slick-theme.css" rel="stylesheet">
 <style type="text/css">
-    .small-pic div{
+    .small-pic{
+        width:16%;
         height:70px;
+        margin: 7px 10px 7px 0px;
+    }
+    .ibox-title{
+        filter:alpha(opacity=0);
+        -moz-opacity:0;
+        -khtml-opacity: 0;
+        opacity: 0;
+        height:100%;
     }
     .metrics{
         height:130px;
     }
     .progress{
-        /*background-color:#CCC;*/
         border:1px solid #5bc0de;
     }
     .progress-bar{
         background-color:#5bc0de;
     }
-    .addPicBtn{
-        background-color:#5bc0de;
-        color:#fff;
+    .disabled {
+        pointer-events: none;
     }
 </style>
 
@@ -36,12 +43,12 @@
                         <div class="product-images">
 
                             <div>
-                                <div class="image-imitation" style="background: url('../img/i.png') no-repeat center;">
+                                <div class="image-imitation">
+                                    [IMAGE 1]
                                 </div>
                             </div>
                             <div>
-                                <div class="image-imitation">
-                                    [IMAGE 2]
+                                <div class="image-imitation" style="background: url('../img/i2.png') no-repeat center;">
                                 </div>
                             </div>
                             <div>
@@ -70,28 +77,35 @@
                         </div>
                         <hr>
                         <div>
-                            <div class="row m-l-sm">
+                            <div class="row">
                                 <div class="col-md-9">
-                                    <div class="row small-pic">
-                                        <div class="col-md-2 col-xs-4 t-border m-r-sm m-b-xs m-t-xs">
+                                    <div class="row">
+                                        <div class="col-md-12 small-pic-group disabled">
+                                            <div class="small-pic pull-left t-border" style="opacity: 1; z-index: 0; background: url('../img/i1.jpg') center">
+                                                <div class="ibox-title"></div>
+                                            </div>
 
-                                        </div>
-                                        <div class="col-md-2 col-xs-4 t-border m-r-sm m-b-xs m-t-xs">
+                                            <div class="small-pic pull-left t-border" style="opacity: 1; z-index: 0;">
+                                                <div class="ibox-title"></div>
+                                            </div>
 
-                                        </div>
-                                        <div class="col-md-2 col-xs-4 t-border m-r-sm m-b-xs m-t-xs">
+                                            <div class="small-pic pull-left t-border" style="opacity: 1; z-index: 0;">
+                                                <div class="ibox-title"></div>
+                                            </div>
 
-                                        </div>
-                                        <div class="col-md-2 col-xs-4 t-border m-r-sm m-b-xs m-t-xs">
+                                            <div class="small-pic pull-left t-border" style="opacity: 1; z-index: 0;">
+                                                <div class="ibox-title"></div>
+                                            </div>
 
-                                        </div>
-                                        <div class="col-md-2 col-xs-4 t-border m-r-sm m-b-xs m-t-xs">
-
+                                            <div class="small-pic pull-left t-border" style="opacity: 1; z-index: 0;">
+                                                <div class="ibox-title"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <button class="btn addPicBtn">Add picture</button>
+                                <div class="col-md-3 btn-group">
+                                    <button class="btn btn-white btn-sm" data-name="editPic" onclick="editSmallPic()"><i class="fa fa-edit"></i> Edit </button>
+                                    <button class="btn btn-info btn-sm"><i class="fa fa-star"></i> Add </button>
                                 </div>
                             </div>
                         </div>
@@ -174,7 +188,6 @@
                                     </span>
             </div>
         </div>
-
         <div class="vertical-timeline-block">
             <div class="vertical-timeline-icon lazur-bg">
                 <i class="fa fa-coffee"></i>
@@ -238,8 +251,11 @@
 
 <!-- Sparkline -->
 <script src="../js/plugins/sparkline/jquery.sparkline.min.js"></script>
+<script src="../js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
 
 <script>
+
     $(document).ready(function(){
         sessionStorage.currentPathName = "花村苹果";
         sessionStorage.parentPathName = "库存";
@@ -255,6 +271,10 @@
 
 
         var sparklineCharts = function(){
+            <!-- Enable portlets -->
+            WinMove();
+
+
             $("#sparkline").sparkline([74, 43, 23, 55, 54, 32, 24, 12], {
                 type: 'line',
                 width: '100%',
@@ -275,6 +295,22 @@
 
 
     });
+
+
+    var smallPicMoveFlag = false;
+    function editSmallPic() {
+        smallPicMoveFlag = !smallPicMoveFlag;
+        if(smallPicMoveFlag){
+            $(".small-pic-group").removeClass("disabled");
+
+                $('.small-pic').addClass('animated');
+                $('.small-pic').addClass('tada2');
+
+        }else{
+            $(".small-pic-group").addClass("disabled");
+            $('.small-pic').removeClass('animated').removeClass('tada2');
+        }
+    }
 
 
 </script>
