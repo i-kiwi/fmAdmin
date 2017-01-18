@@ -25,6 +25,10 @@
 
 </style>
 
+
+
+
+
 <div class="row">
     <div class="col-lg-12">
         <div class="ibox-content m-b-sm">
@@ -54,18 +58,20 @@
                 <button class="btn btn-white btn-sm"><i class="fa fa-exclamation"></i></button>
                 <button class="btn btn-white btn-sm"><i class="fa fa-trash-o"></i></button>
 
-                <button class="btn btn-sm btn-success  pull-right" type="button"><i class="fa fa-plus-square-o"> 新增</i></button>
+                <button class="btn btn-sm btn-success  pull-right" type="button" data-toggle="modal" data-target="#myModal" onclick="addStore()"><i class="fa fa-plus-square-o"> 新增</i></button>
+
             </div>
         </div>
     </div>
 </div>
 <div class="row store-list">
 
+
     <div class="col-md-3">
         <div class="ibox">
             <div class="ibox-content product-box">
 
-                <div class="product-imitation" style="background-image:url('../img/i2.png');">
+                <div class="product-imitation" style="background-image:url('../img/i 2.png');">
                 </div>
                 <div class="product-desc">
                     <span class="product-price">
@@ -74,7 +80,7 @@
                     <div class="m-t-n-sm m-b-xs"><i class="fa fa-cube"></i><span class="store-count">600</span></div>
 
                     <div><a class="product-name">花村苹果</a></div>
-                    <input type="hidden" value="239jesdnk3b2lj2" />
+                    <input type="hidden" value="" />
 
 
 
@@ -96,7 +102,7 @@
         <div class="ibox">
             <div class="ibox-content product-box">
 
-                <div class="product-imitation" style="background-image:url('../img/i2.png');">
+                <div class="product-imitation" style="background-image:url('../img/i 2.png');">
                 </div>
                 <div class="product-desc">
                     <span class="product-price">
@@ -125,7 +131,7 @@
         <div class="ibox">
             <div class="ibox-content product-box">
 
-                <div class="product-imitation" style="background-image:url('../img/i2.png');">
+                <div class="product-imitation" style="background-image:url('../img/i 2.png');">
                 </div>
                 <div class="product-desc">
                     <span class="product-price">
@@ -154,7 +160,7 @@
         <div class="ibox">
             <div class="ibox-content product-box">
 
-                <div class="product-imitation" style="background-image:url('../img/i2.png');">
+                <div class="product-imitation" style="background-image:url('../img/i 2.png');">
                 </div>
                 <div class="product-desc">
                     <span class="product-price">
@@ -183,7 +189,7 @@
         <div class="ibox">
             <div class="ibox-content product-box">
 
-                <div class="product-imitation" style="background-image:url('../img/i2.png');">
+                <div class="product-imitation" style="background-image:url('../img/i 2.png');">
                 </div>
                 <div class="product-desc">
                     <span class="product-price">
@@ -212,7 +218,7 @@
         <div class="ibox">
             <div class="ibox-content product-box">
 
-                <div class="product-imitation" style="background-image:url('../img/i2.png');">
+                <div class="product-imitation" style="background-image:url('../img/i 2.png');">
                 </div>
                 <div class="product-desc">
                     <span class="product-price">
@@ -241,7 +247,7 @@
         <div class="ibox">
             <div class="ibox-content product-box">
 
-                <div class="product-imitation" style="background-image:url('../img/i2.png');">
+                <div class="product-imitation" style="background-image:url('../img/i 2.png');">
                 </div>
                 <div class="product-desc">
                     <span class="product-price">
@@ -282,4 +288,11 @@
             jump("store_detail");
         });
     })
+    
+    function addStore() {
+        ajaxLoad("store_modal.html","","post","text",fillModal,null,null);
+        function fillModal(data){
+            $("#myModal").html(data);
+        }
+    }
 </script>
