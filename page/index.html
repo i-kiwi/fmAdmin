@@ -313,10 +313,12 @@
             tempOlObj.html("<li> Home</i></li>" + tempOlObj.html());
         }
 
-        function jump(targetPath, flag) {
-            if(flag || sessionStorage.currentPath != targetPath){
-                $(".wrapper-content").removeClass("animated fadeInRight").addClass("animated fadeOutRight");
-                ajaxLoad(localIp+"fmAdmin/page/"+targetPath+".html","","post","text",fillContent,null,awayFunc);
+        function jump(targetPath, menuPath) {
+            $(".wrapper-content").removeClass("animated fadeInRight").addClass("animated fadeOutRight");
+            ajaxLoad(localIp+"fmAdmin/page/"+targetPath+".html","","post","text",fillContent,null,awayFunc);
+            if(menuPath){
+                sessionStorage.currentPath = menuPath;
+            }else{
                 sessionStorage.currentPath = targetPath;
             }
         }
@@ -330,7 +332,7 @@
                 }
             });
 
-            jump(sessionStorage.currentPath?sessionStorage.currentPath:"home", true);
+            jump(sessionStorage.currentPath?sessionStorage.currentPath:"home");
         });
 
     </script>
