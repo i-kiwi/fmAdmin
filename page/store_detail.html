@@ -105,7 +105,7 @@
                                 </div>
                                 <div class="col-md-3 btn-group">
                                     <button class="btn btn-white btn-sm" data-name="editPic" onclick="editSmallPic()"><i class="fa fa-edit"></i> Edit </button>
-                                    <button class="btn btn-info btn-sm"><i class="fa fa-star"></i> Add </button>
+                                    <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal" onclick="uploadPic()"><i class="fa fa-star"></i> Add </button>
                                 </div>
                             </div>
                         </div>
@@ -312,5 +312,11 @@
         }
     }
 
+    function uploadPic() {
+        ajaxLoad("store_uploadPic_modal.html","","post","text",fillModal,null,null);
+        function fillModal(data){
+            $("#myModal").html(data);
+        }
+    }
 
 </script>

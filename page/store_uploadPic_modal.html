@@ -1,0 +1,39 @@
+<div class="modal-dialog modal-md">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title">Modal title</h4>
+            <small class="font-bold">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>
+        </div>
+        <div class="modal-body">
+
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="saveBtn">Save changes</button>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function(){
+        $('#saveBtn').click(function(){
+            $("#myModal").modal("hide");
+
+            sessionStorage.parentPathName = "aslj"
+            sessionStorage.currentPathName = "apple";
+            fillTitle(sessionStorage.currentPathName, sessionStorage.parentPathName);
+            jump("store_detail", "store");
+
+            swal({
+                title: "Good job!",
+                text: "You clicked the button!",
+                type: "success",
+                timer:2000
+            });
+        });
+    });
+</script>
+
