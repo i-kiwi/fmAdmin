@@ -294,29 +294,9 @@
 
     <script>
         function fillContent(data) {
+
             /*填充content*/
             $(".wrapper-content").html(data);
-
-
-            /*动画优化*/
-//            $("#side-menu li").removeClass("active");
-//            $.each($("#side-menu li"),function(){
-//                if($(this).children("input").val() == sessionStorage.currentPath){
-//                    $(this).addClass("active");
-//
-////                    var currentPathName = $(this).children("a").children("span:first").text();
-////                    if(currentPathName){
-////                        var parentPathName = $(this).parent().parent().children("a").children("span:first").text();
-////                        sessionStorage.currentPathName = currentPathName;
-////                        sessionStorage.parentPathName = parentPathName;
-////                        /*标题部分*/
-////                        fillTitle(currentPathName, parentPathName);
-////                    }else{
-////                        fillTitle(sessionStorage.currentPathName, sessionStorage.parentPathName);
-////                    }
-//                }
-//            })
-
             /*标题*/
             fillTitle(sessionStorage.currentPathName, sessionStorage.parentPathName);
         }
@@ -337,17 +317,12 @@
             tempOlObj.html("<li> Home</i></li>" + tempOlObj.html());
         }
 
-        function jump(targetPath, menuPath) {
+        function jump(targetPath) {
             $(".wrapper-content").removeClass("animated fadeInRight").addClass("animated fadeOutRight");
             ajaxLoad(localIp+"fmAdmin/page/"+targetPath+".html","","post","text",fillContent,null,awayFunc);
-            if(menuPath){
-                sessionStorage.currentPath = menuPath;
-            }else{
-                sessionStorage.currentPath = targetPath;
-            }
+            sessionStorage.currentPath = targetPath;
         }
         $(document).ready(function () {
-
             $("#side-menu li").click(function(){
 
                 var targetPath = $(this).children("input").val();
@@ -355,6 +330,15 @@
                     jump(targetPath);
                 }
             });
+
+            /*动画优化*/
+            $.each($("#side-menu li"),function(){
+                if($(this).children("input").val() == sessionStorage.currentPath){
+                    $(this).addClass("active");
+                    $(this).parent("ul").addClass("in").parent("li").addClass("active");
+                }
+            })
+
 
             jump(sessionStorage.currentPath?sessionStorage.currentPath:"home");
         });

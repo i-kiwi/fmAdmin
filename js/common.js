@@ -68,6 +68,15 @@ $(function () {
             window.location.href = "login.html";
         }
     }
+
+    if (window.history && window.history.pushState) {
+        $(window).on('popstate', function () {
+            window.history.pushState('forward', null, '#');
+            window.history.forward(1);
+        });
+    }
+    window.history.pushState('forward', null, '#');
+    window.history.forward(1);
 })
 
 /*ajax调用封装*/
