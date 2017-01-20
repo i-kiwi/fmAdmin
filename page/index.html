@@ -24,6 +24,7 @@
 
 
 
+
 </head>
 
 <body>
@@ -32,7 +33,7 @@
 
     <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
-            <ul class="nav metismenu"  id="side-menu">
+            <ul class="nav metismenu"  id="side-menu" role="menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
                             <img alt="image" class="img-circle headImg m-b-sm" src="../img/i1.jpg" />
@@ -88,6 +89,12 @@
                     <a><i class="fa fa-rmb"></i><span class="nav-label">财务</span></a>
                     <input type="hidden" value="account"/>
                     <ul class="nav nav-second-level">
+                    </ul>
+                </li>
+                <li>
+                    <a><i class="fa fa-th-large"></i><span class="nav-label">更多</span></a>
+                    <ul class="nav nav-second-level">
+                        <li><input type="hidden" value="picShear"/><a><span>图片裁剪</span></a></li>
                     </ul>
                 </li>
                 <li>
@@ -267,6 +274,13 @@
     <script src="../js/plugins/sweetalert/sweetalert.min.js"></script>
     <script src="../js/common.js"></script>
 
+
+
+
+
+
+
+
     <script>
         function fillContent(data) {
             /*填充content*/
@@ -294,7 +308,6 @@
 
             /*标题*/
             fillTitle(sessionStorage.currentPathName, sessionStorage.parentPathName);
-
         }
         function awayFunc() {
             /*动画优化*/
