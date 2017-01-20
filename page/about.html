@@ -1,66 +1,11 @@
-<link href="../css/plugins/dropzone/basic.css" rel="stylesheet">
-<link href="../css/plugins/dropzone/dropzone.css" rel="stylesheet">
-
-<form class="dropzone" action="#">
-    <div class="dropzone-previews"></div>
-    <button type="submit" class="btn btn-primary pull-right">Submit this form!</button>
-</form>
-
-
-<!-- DROPZONE -->
-<script src="../js/plugins/dropzone/dropzone.js"></script>
-
-
-
-<script>
-
-
-    $(".dropzone").dropzone({
-        url: "handle-upload.php",
-        addRemoveLinks: true,
-        dictRemoveLinks: "x",
-        dictCancelUpload: "x",
-        maxFiles: 10,
-        maxFilesize: 5,
-        acceptedFiles: ".js",
-        init: function() {
-            this.on("success", function(file) {
-                alert("File " + file.name + "uploaded");
-            });
-            this.on("removedfile", function(file) {
-                alert("File " + file.name + "removed");
-            });
-        }
-    });
-
-//    $(document).ready(function(){
-
-//        Dropzone.options.myAwesomeDropzone = {
-//
-//            autoProcessQueue: false,
-//            uploadMultiple: true,
-//            parallelUploads: 100,
-//            maxFiles: 100,
-//
-//            // Dropzone settings
-//            init: function() {
-//                var myDropzone = this;
-//
-//                console.log(this);
-//                this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
-//                    e.preventDefault();
-//                    e.stopPropagation();
-//                    myDropzone.processQueue();
-//                });
-//                this.on("sendingmultiple", function() {
-//                });
-//                this.on("successmultiple", function(files, response) {
-//                });
-//                this.on("errormultiple", function(files, response) {
-//                });
-//            }
-
-//        }
-
-//    });
-</script>
+<ul class="media-list">
+    <li class="media">
+        <a class="media-left" href="#">
+            <img src="..." alt="...">
+        </a>
+        <div class="media-body">
+            <h4 class="media-heading">Media heading</h4>
+            ...
+        </div>
+    </li>
+</ul>
