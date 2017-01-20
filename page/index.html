@@ -317,10 +317,10 @@
             tempOlObj.html("<li> Home</i></li>" + tempOlObj.html());
         }
 
-        function jump(targetPath) {
+        function jump(targetPath, navPath) {
             $(".wrapper-content").removeClass("animated fadeInRight").addClass("animated fadeOutRight");
             ajaxLoad(localIp+"fmAdmin/page/"+targetPath+".html","","post","text",fillContent,null,awayFunc);
-            sessionStorage.currentPath = targetPath;
+            sessionStorage.currentPath = navPath ? navPath : targetPath;
         }
         $(document).ready(function () {
             $("#side-menu li").click(function(){
@@ -335,7 +335,7 @@
             $.each($("#side-menu li"),function(){
                 if($(this).children("input").val() == sessionStorage.currentPath){
                     $(this).addClass("active");
-                    $(this).parent("ul").addClass("in").parent("li").addClass("active");
+                    $(this).parent(".nav-second-level").addClass("in").parent("li").addClass("active");
                 }
             })
 

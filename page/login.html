@@ -53,17 +53,18 @@
     <script src="../js/common.js"></script>
     <script>
         function login(){
-            if($("#username").val() && $("#password").val()){
+//            if($("#username").val() && $("#password").val()){
                 //ajax
                 var result = "SUCCESS"
                 if(result == "SUCCESS"){
                     function suc() {
-                        sessionStorage.setItem("username","admin");
+                        sessionStorage.username = "admin";
+                        sessionStorage.currentPath = "home";
                         window.location.href = "index.html";
                     }
                     ajaxLoad(localIp+"fmAdmin/page/login.html","","post","text",suc,null,null);
                 }
-            }
+//            }
         }
     </script>
 </body>

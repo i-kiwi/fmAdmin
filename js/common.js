@@ -1,5 +1,5 @@
-var localIp="http://localhost:8080/";
-// var localIp="http://192.168.99.224:8080/";
+// var localIp="http://localhost:8080/";
+var localIp=window.location.origin+"/";
 var prodName = "";  //接口加密字段prodName值
 
 /*公用功能*/
@@ -64,19 +64,19 @@ var publicUtil = {
 $(function () {
     if(window.location.href.indexOf("login.html") == -1){
         if(sessionStorage.getItem("username")){
+            if (window.history && window.history.pushState) {
+                $(window).on('popstate', function () {
+                    window.history.pushState('forward', null, '#');
+                    window.history.forward(1);
+                });
+            }
+            window.history.pushState('forward', null, '#');
+            window.history.forward(1);
         }else{
             window.location.href = "login.html";
         }
     }
 
-    if (window.history && window.history.pushState) {
-        $(window).on('popstate', function () {
-            window.history.pushState('forward', null, '#');
-            window.history.forward(1);
-        });
-    }
-    window.history.pushState('forward', null, '#');
-    window.history.forward(1);
 })
 
 /*ajax调用封装*/
