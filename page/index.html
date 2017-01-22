@@ -46,7 +46,7 @@
                             <li><input type="hidden" value="messageSetting"/><a>消息设置</a></li>
                             <li><input type="hidden" value="help"/><a>帮助中心</a></li>
                             <li class="divider"></li>
-                            <li><a href="login.html">退出</a></li>
+                            <li><a href="login.html" onclick="logout()">退出</a></li>
                         </ul>
                     </div>
                     <div class="logo-element">
@@ -54,7 +54,7 @@
                     </div>
                 </li>
                 <li class="linkLi">
-                    <a><i class="fa fa-home"></i><span class="nav-label">首页</span><span class="label label-info pull-right">62</span></a>
+                    <a><i class="fa fa-home btn-circle"></i><span class="nav-label">首页</span><span class="label label-info pull-right">62</span></a>
                     <input type="hidden" value="home"/>
                     <!--<ul class="nav nav-second-level">-->
                     <!--</ul>-->
@@ -132,7 +132,7 @@
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                        <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
+                        <i class="fa fa-envelope"></i>  <span class="label label-warning">0</span>
                     </a>
                     <!--<ul class="dropdown-menu dropdown-messages">-->
                         <!--<li>-->
@@ -185,7 +185,7 @@
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                        <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
+                        <i class="fa fa-bell"></i>  <span class="label label-primary">0</span>
                     </a>
                     <!--<ul class="dropdown-menu dropdown-alerts">-->
                         <!--<li>-->
@@ -228,7 +228,7 @@
 
 
                 <li>
-                    <a href="login.html">
+                    <a href="login.html" onclick="logout()">
                         <i class="fa fa-sign-out"></i> Log out
                     </a>
                 </li>

@@ -64,20 +64,15 @@ var publicUtil = {
 $(function () {
     if(window.location.href.indexOf("login.html") == -1){
         if(sessionStorage.getItem("username")){
-            if (window.history && window.history.pushState) {
-                $(window).on('popstate', function () {
-                    window.history.pushState('forward', null, '#');
-                    window.history.forward(1);
-                });
-            }
-            window.history.pushState('forward', null, '#');
-            window.history.forward(1);
         }else{
             window.location.href = "login.html";
         }
     }
 
 })
+function logout() {
+    sessionStorage.removeItem("username");
+}
 
 /*ajax调用封装*/
 function ajaxLoad(url,dataParams,type,dataType,doneSucc,doneFail,compeleteSucc){

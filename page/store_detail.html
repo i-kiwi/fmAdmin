@@ -104,7 +104,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3 btn-group">
-                                    <button class="btn btn-white btn-sm" data-name="editPic" onclick="editSmallPic()"><i class="fa fa-edit"></i> Edit </button>
+                                    <button class="btn btn-white btn-sm" data-name="editPic" onclick="editSmallPic($(this))"><i class="fa fa-edit"></i>&nbsp;<span class="editLabel">Edit</span></button>
                                     <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal" onclick="uploadPic()"><i class="fa fa-star"></i> Add </button>
                                 </div>
                             </div>
@@ -118,11 +118,11 @@
                                 <h5>剩余</h5>
                                 <h2><span>3210</span>&nbsp;<span>斤</span><i class="fa fa-edit pull-right"></i></h2>
 
-                                <div class="progress progress-mini">
+                                <div class="progress progress-small">
                                     <div style="width: 68%;" class="progress-bar"></div>
                                 </div>
 
-                                <div class="m-t-sm small">上次添加时间 1月16日  4:32 pm.</div>
+                                <div class="m-t-n-sm small">上次添加时间 1月16日  4:32 pm.</div>
                             </div>
                             <div class="well col-lg-5 m-l-md metrics">
                                 <h5>月销图</h5>
@@ -294,20 +294,24 @@
         sparklineCharts();
 
 
+
     });
 
 
     var smallPicMoveFlag = false;
-    function editSmallPic() {
+    function editSmallPic(btnObj) {
         smallPicMoveFlag = !smallPicMoveFlag;
         if(smallPicMoveFlag){
             $(".small-pic-group").removeClass("disabled");
             $('.small-pic').addClass('animated');
             $('.small-pic').addClass('tada2');
-
+            $(".editLabel").text("Save");
+            btnObj.removeClass("btn-white").addClass("btn-success");
         }else{
             $(".small-pic-group").addClass("disabled");
             $('.small-pic').removeClass('animated').removeClass('tada2');
+            $(".editLabel").text("Edit");
+            btnObj.removeClass("btn-success").addClass("btn-white");
         }
     }
 
