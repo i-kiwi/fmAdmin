@@ -1,0 +1,221 @@
+<style type="text/css">
+    .close{
+    }
+</style>
+
+<div class="col-lg-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>All form elements <small>With custom checbox and radion elements.</small></h5>
+        </div>
+        <div class="ibox-content">
+            <form method="get" class="form-horizontal">
+                <div class="form-group"><label class="col-lg-2 control-label">Disabled</label>
+                    <div class="col-lg-10"><input type="text" disabled="" placeholder="Disabled input here..." class="form-control"></div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group"><label class="col-sm-2 control-label">Normal</label>
+                    <div class="col-sm-10"><input type="text" class="form-control"></div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group"><label class="col-sm-2 control-label">Password</label>
+                    <div class="col-sm-10"><input type="password" class="form-control" name="password"></div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group"><label class="col-sm-2 control-label">Placeholder</label>
+                    <div class="col-sm-10"><input type="text" placeholder="placeholder" class="form-control"></div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group"><label class="col-lg-2 control-label">Static</label>
+
+                    <div class="col-lg-10"><p class="form-control-static">email@example.com</p></div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group"><label class="col-sm-2 control-label">Checkboxes</label>
+                    <div class="col-sm-10"><label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> a </label> <label class="checkbox-inline">
+                        <input type="checkbox" value="option2" id="inlineCheckbox2"> b </label> <label class="checkbox-inline">
+                        <input type="checkbox" value="option3" id="inlineCheckbox3"> c </label></div>
+                </div>
+
+                <div class="hr-line-dashed"></div>
+                <div class="form-group"><label class="col-sm-2 control-label">Segmented</label>
+
+                    <div class="col-sm-10">
+                        <div class="input-group m-b">
+                            <div class="input-group-btn">
+                                <button tabindex="-1" class="btn btn-white" type="button">Action</button>
+                                <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button"><span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <input type="text" class="form-control"></div>
+                        <div class="input-group"><input type="text" class="form-control">
+
+                            <div class="input-group-btn">
+                                <button tabindex="-1" class="btn btn-white" type="button">Action</button>
+                                <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button"><span class="caret"></span></button>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <div class="col-sm-2 pull-right">
+                        <button class="btn btn-primary m-l-sm" type="button">Save changes</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-lg-12">
+    <div class="ibox ">
+        <div class="ibox-title">
+            <h5>Nestable custom theme list</h5>
+        </div>
+        <div class="ibox-content">
+
+            <p class="m-b-lg">
+                Each list you can customize by standard css styles. Each element is responsive so you can add to it any other element to improve functionality of list.
+            </p>
+
+            <div class="dd" id="nestable2">
+                <ol class="dd-list">
+                    <li class="dd-item" data-id="1">
+                        <div class="dd-handle">
+                            <button type="button" class="close"><span aria-hidden="true">&times;</span></button>
+                            <span class="label label-info"><i class="fa fa-users"></i></span> Cras ornare tristique.
+                        </div>
+                        <ol class="dd-list">
+                            <li class="dd-item" data-id="2">
+                                <div class="dd-handle">
+                                    <button type="button" class="close"><span aria-hidden="true">&times;</span></button>
+                                    <span class="label label-info"><i class="fa fa-cog"></i></span> Vivamus vestibulum nulla nec ante.
+                                </div>
+                            </li>
+                            <li class="dd-item" data-id="3">
+                                <div class="dd-handle">
+                                    <button type="button" class="close"><span aria-hidden="true">&times;</span></button>
+                                    <span class="label label-info"><i class="fa fa-bolt"></i></span> Nunc dignissim risus id metus.
+                                </div>
+                            </li>
+                            <li class="dd-item" data-id="4">
+                                <div class="dd-handle">
+                                    <button type="button" class="close"><span aria-hidden="true">&times;</span></button>
+                                    <span class="label label-info"><i class="fa fa-laptop"></i></span> Vestibulum commodo
+                                </div>
+                            </li>
+                        </ol>
+                    </li>
+
+                    <li class="dd-item" data-id="1">
+                        <div class="dd-handle">
+                            <button type="button" class="close"><span aria-hidden="true">&times;</span></button>
+                            <span class="label label-info"><i class="fa fa-users"></i></span> Cras ornare tristique.
+                        </div>
+                        <ol class="dd-list">
+                            <li class="dd-item" data-id="2">
+                                <div class="dd-handle">
+                                    <button type="button" class="close"><span aria-hidden="true">&times;</span></button>
+                                    <span class="label label-info"><i class="fa fa-cog"></i></span> Vivamus vestibulum nulla nec ante.
+                                </div>
+                            </li>
+                            <li class="dd-item" data-id="3">
+                                <div class="dd-handle">
+                                    <button type="button" class="close"><span aria-hidden="true">&times;</span></button>
+                                    <span class="label label-info"><i class="fa fa-bolt"></i></span> Nunc dignissim risus id metus.
+                                </div>
+                            </li>
+                            <li class="dd-item" data-id="4">
+                                <div class="dd-handle">
+                                    <button type="button" class="close"><span aria-hidden="true">&times;</span></button>
+                                    <span class="label label-info"><i class="fa fa-laptop"></i></span> Vestibulum commodo
+                                </div>
+                            </li>
+                        </ol>
+                    </li>
+
+                </ol>
+
+            </div>
+            <textarea id="nestable2-output" class="form-control"></textarea>
+
+
+            <div class="hr-line-dashed"></div>
+            <div class="form-group clearfix">
+                <div class="col-sm-2 pull-right">
+                    <button class="btn btn-primary m-l-sm" type="button">Save changes</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+
+
+
+<!-- Nestable List -->
+<script src="../js/plugins/nestable/jquery.nestable.js"></script>
+
+
+
+<script>
+    $(document).ready(function(){
+
+        var updateOutput = function (e) {
+            var list = e.length ? e : $(e.target),
+                output = list.data('output');
+            if (window.JSON) {
+                output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
+            } else {
+                output.val('JSON browser support required for this demo.');
+            }
+        };
+        // activate Nestable for list 2
+        $('#nestable2').nestable({
+            group:1
+        }).on('change', updateOutput);
+
+        // output initial serialised data
+        updateOutput($('#nestable2').data('output', $('#nestable2-output')));
+        
+        $("#nestable2 .close").click(function () {
+            var t = $(this);
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: true
+            }, function (isOk) {
+                if(isOk){
+                    t.parent().parent().remove();
+                    updateOutput($('#nestable2').data('output', $('#nestable2-output')));
+                }
+            });
+        })
+
+    });
+
+</script>
+
+

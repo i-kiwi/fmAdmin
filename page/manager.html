@@ -27,7 +27,7 @@
 
     <div class="col-lg-4">
         <div class="contact-box">
-            <a>
+            <a onclick="jumpUserInfoManager($(this))">
                 <div class="col-sm-4">
                     <div class="text-center">
                         <img alt="image" class="img-circle m-t-xs img-responsive" src="../img/i1.jpg">
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="col-sm-8">
-                    <h3><strong>John Smith</strong></h3>
+                    <h3><strong class="managerName">John Smith</strong></h3>
                     <p><i class="fa fa-map-marker"></i> Riviera State 32/106</p>
                     <address>
                         <strong>Twitter, Inc.</strong><br>
@@ -56,4 +56,10 @@
         sessionStorage.currentPathName = "管理员";
         sessionStorage.parentPathName = "用户";
     });
+    
+    function jumpUserInfoManager(obj) {
+        sessionStorage.currentPathName = obj.find(".managerName").text();
+        sessionStorage.parentPathName = "用户";
+        jump("user_info_manager", "manager");
+    }
 </script>
