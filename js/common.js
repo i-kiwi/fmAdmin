@@ -1,6 +1,7 @@
 // var localIp="http://localhost:8080/";
 var localIp=window.location.origin+"/";
 var prodName = "";  //接口加密字段prodName值
+// var promise_;
 
 /*公用功能*/
 var publicUtil = {
@@ -17,25 +18,20 @@ var publicUtil = {
       return query.substring(iStart, iEnd);
   },
     "popLoader" : function(){ //弹出加载中
-      $('.z_loader').remove();
-      var loaderStr='<div class="z_loader">\
-                <div class="z_loadercon">\
-                  <div class="z_loadicon"><b class="circle"></b></div>\
-                  <p></p>\
-                </div>\
-              </div>';
-      $("body").append(loaderStr);
-      $(".z_loader").fadeIn();
+        $(".wrapper-content").removeClass("animated fadeInRight").addClass("animated fadeOutRight");
+        // setTimeout(function () {
+        //     $(".loading").fadeIn();
+        // },400);
     },
     "closeLoader" : function(){ //关闭加载中
-      $(".z_loader").hide();
+        $(".loading").hide();
     },
     "alert" : function(msg,time){  //弹出alert信息,默认2秒后消失
       var _time = time? time*1000 : 2000;
       if (document.getElementById("alert_mask")) {
         $("#alert_mask").remove();
       }
-      
+
       var alertStr='<div class="alert_mask" id="alert_mask">\
             <section class="alert_section" id="alert_section">\
               <div class="alert_content">\
@@ -74,8 +70,17 @@ function logout() {
     sessionStorage.removeItem("username");
 }
 
+
 /*ajax调用封装*/
 function ajaxLoad(url,dataParams,type,dataType,doneSucc,doneFail,compeleteSucc){
+
+    // 禁止ajax重复提交
+    // console.log($(promise_).promise().state());
+    // if ($(promise_).promise().state() === 'pending') {
+    //     $(promise_).promise().abort()
+    // }
+
+
     //GET请求接口拼接随机时间戳
     url = type.toLowerCase()=="get"? (url+"?random="+Math.random()) : url;
     var ajaxParamObj = {
@@ -100,21 +105,27 @@ function ajaxLoad(url,dataParams,type,dataType,doneSucc,doneFail,compeleteSucc){
     console.log("请求接口参数："+JSON.stringify(ajaxParamObj));
 
     publicUtil.popLoader();
-    $.ajax(ajaxParamObj)
-    .done(function(data) {
-        doneSucc(data);
-    })
-    .error(function() {
-        if(typeof(doneFail) == "function") {
-            doneFail();
-        }
-    })
-    .always(function() {
-        publicUtil.closeLoader();
-        if(typeof(compeleteSucc) == "function") {
-          compeleteSucc();
-        }
-    });
+    // setTimeout(function () {
+        $.ajax(ajaxParamObj)
+            .done(function(data) {
+                if(typeof(doneSucc) == "function") {
+                    doneSucc(data);
+                }
+            })
+            .error(function() {
+                if(typeof(doneFail) == "function") {
+                    doneFail();
+                }
+            })
+            .always(function() {
+                // publicUtil.closeLoader();
+                if(typeof(compeleteSucc) == "function") {
+                    compeleteSucc();
+                }
+                // console.log("ddddddd");
+            });
+    // },2000)
+
 }
 
 /*------------encoding------------*/

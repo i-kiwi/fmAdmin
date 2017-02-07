@@ -8,6 +8,64 @@
     width:18px;
 }
 
+.loading {
+    width: 60px;
+    height: 60px;
+    /*background-color: #0083ff;*/
+    margin: 200px auto;
+    -webkit-animation: ld-rotatePlane 1.2s infinite ease-in-out;
+    animation: ld-rotatePlane 1.2s infinite ease-in-out;
+    background-image: url("../img/i1.jpg");
+    background-size: 100% 100%;
+    border-radius: 10px;
+    /*opacity: 0.5;*/
+    /*z-index: 1000;*/
+}
+@-webkit-keyframes ld-rotatePlane {
+    0% {
+        -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+        transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    }
+    25% {
+        -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+        transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    }
+    50% {
+        -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+        transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    }
+    75% {
+        -webkit-transform: perspective(120px) rotateX(-360.1deg) rotateY(-179.9deg);
+        transform: perspective(120px) rotateX(-360.1deg) rotateY(-179.9deg);
+    }
+    100% {
+        -webkit-transform: perspective(120px) rotateX(-360.1deg) rotateY(-359.9deg);
+        transform: perspective(120px) rotateX(-360.1deg) rotateY(-359.9deg);
+    }
+}
+@keyframes ld-rotatePlane {
+    0% {
+        -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+        transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    }
+    25% {
+        -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+        transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    }
+    50% {
+        -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(-179.9deg);
+        transform: perspective(120px) rotateX(-180.1deg) rotateY(-179.9deg);
+    }
+    75% {
+        -webkit-transform: perspective(120px) rotateX(-360.1deg) rotateY(-179.9deg);
+        transform: perspective(120px) rotateX(-360.1deg) rotateY(-179.9deg);
+    }
+    100% {
+        -webkit-transform: perspective(120px) rotateX(-360.1deg) rotateY(-0deg);
+        transform: perspective(120px) rotateX(-360.1deg) rotateY(-0deg);
+    }
+}
+
 /*.myNav{*/
 
 /*}*/
