@@ -58,12 +58,12 @@ var publicUtil = {
 };
 
 $(function () {
-    if(window.location.href.indexOf("login.html") == -1){
-        if(sessionStorage.getItem("username")){
-        }else{
-            window.location.href = "login.html";
-        }
-    }
+    // if(window.location.href.indexOf("login.html") == -1){
+    //     if(sessionStorage.getItem("username")){
+    //     }else{
+    //         window.location.href = "login.html";
+    //     }
+    // }
 
 })
 function logout() {
@@ -73,7 +73,6 @@ function logout() {
 
 /*ajax调用封装*/
 function ajaxLoad(url,dataParams,type,dataType,doneSucc,doneFail,compeleteSucc){
-
     // 禁止ajax重复提交
     // console.log($(promise_).promise().state());
     // if ($(promise_).promise().state() === 'pending') {
@@ -104,7 +103,9 @@ function ajaxLoad(url,dataParams,type,dataType,doneSucc,doneFail,compeleteSucc){
 
     console.log("请求接口参数："+JSON.stringify(ajaxParamObj));
 
-    publicUtil.popLoader();
+    if(url.indexOf("store_modal") == -1){
+        publicUtil.popLoader();
+    }
     // setTimeout(function () {
         $.ajax(ajaxParamObj)
             .done(function(data) {

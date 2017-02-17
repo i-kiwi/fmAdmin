@@ -13,6 +13,8 @@
 
     <link href="../css/animate.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
+    <!-- Sweet Alert -->
+    <link href="../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
 
 </head>
 
@@ -51,20 +53,28 @@
     <script src="../js/jquery-2.1.1.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/common.js"></script>
+    <!-- Sweet alert -->
+    <script src="../js/plugins/sweetalert/sweetalert.min.js"></script>
     <script>
         function login(){
-//            if($("#username").val() && $("#password").val()){
+           if($("#username").val() && $("#password").val()){
                 //ajax
-                var result = "SUCCESS"
-                if(result == "SUCCESS"){
-                    function suc() {
-                        sessionStorage.username = "admin";
+                function suc(data) {
+                    if(data == "1"){
+                        sessionStorage.username = $("#username").val();
                         sessionStorage.currentPath = "home";
                         window.location.href = "index.html";
+                    }else{
+                        swal({
+                            title: "",
+                            text: "密码错误",
+                            timer: 1000
+                        });
                     }
-                    ajaxLoad(localIp+"fmAdmin/page/login.html","","post","text",suc,null,null);
                 }
-//            }
+                var param = {"param":JSON.stringify({"name":$("#username").val(),"pass":$("#password").val()})};
+                ajaxLoad(localIp+"FruitManager/login.do",param,"post","JSON",suc,null,null);
+           }
         }
     </script>
 </body>
