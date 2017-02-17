@@ -142,10 +142,11 @@
                 var list = eval(data.item);
                 for (var i = 0; i < list.length; i++) {
                     var fruit = list[i];
+                    console.log(fruit.IMG_JSON);
                     var str = '<div class="col-md-3 '+(fruit.STATE == '1' || fruit.STORE <= 0 ? 'store-lost' : '')+'">\
                         <div class="ibox">\
                             <div class="product-box ibox-content">\
-                                <div class="product-imitation" style="background-image:url(\''+JSON.parse(fruit.IMG_JSON).n2+'\');">\
+                                <div class="product-imitation" style="background-image:url('+JSON.parse(fruit.IMG_JSON).n1+');">\
                                 </div>\
                                 <div class="product-desc">\
                                     <input type="hidden" value="'+fruit.ID+'">\
@@ -170,9 +171,9 @@
                     </div>'
                     fruit.STATE == '1' || fruit.STORE <= 0 ? (invalidStr += str) : (htmlStr += str);
                 }
-                $(".store-list").append(htmlStr + invalidStr);
+                $(".store-list").html(htmlStr + invalidStr);
                 $(".store-list a").click(function () {
-                    alert($(this).parent().parent().children("input").val());
+//                    alert($(this).parent().parent().children("input").val());
 
                     sessionStorage.parentPathName = "KK"
                     sessionStorage.currentPathName = "apple";

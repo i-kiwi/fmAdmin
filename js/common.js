@@ -114,6 +114,7 @@ function ajaxLoad(url,dataParams,type,dataType,doneSucc,doneFail,compeleteSucc){
                 }
             })
             .error(function() {
+                alert("Throws Exception");
                 if(typeof(doneFail) == "function") {
                     doneFail();
                 }
