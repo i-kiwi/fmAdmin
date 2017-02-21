@@ -40,9 +40,6 @@
     .fruitUnitDiv{
         margin-top:8px;
     }
-    .showImgDiv{
-
-    }
     .imgWindow{
         width:100%;
         height:300px;
@@ -203,7 +200,11 @@
                         <div class="row">
                             <div class="well col-lg-5 m-l-md metrics">
                                 <h5>剩余</h5>
-                                <h2><span class="remaining">3210</span>&nbsp;<span class="staticUnit2">斤</span><i class="fa fa-edit pull-right"></i></h2>
+                                <h2><span class="remaining">3210</span>&nbsp;<span class="staticUnit2">斤</span>
+                                    <a class="btn btn-sm btn-success btn-bitbucket pull-right">
+                                        <i class="fa fa-plus"></i>
+                                    </a>
+                                </h2>
 
                                 <div class="progress progress-small">
                                     <div class="progress-bar" style="width: 100%;"></div>
@@ -213,7 +214,8 @@
                             </div>
                             <div class="well col-lg-5 m-l-md metrics">
                                 <h5>月销图</h5>
-                                <div id="sparkline"><canvas width="211" height="60" style="display: inline-block; width: 211px; height: 60px; vertical-align: top;"></canvas></div>
+                                <div id="sparkline"><canvas width="211" height="50" style="display: inline-block; width: 211px; height: 50px; vertical-align: top;"></canvas></div>
+                                <div class="m-t-xs small totalSales">截止当前总销量 990</div>
                             </div>
                         </div>
 
@@ -455,7 +457,7 @@
             $("#sparkline").sparkline([3, 4, 2, 3, 5, 8, 7, 9], {
                 type: 'line',
                 width: '100%',
-                height: '60',
+                height: '50',
                 lineColor: '#d9534f',
                 fillColor: "#ffffff"
             });
