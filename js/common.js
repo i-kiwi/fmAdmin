@@ -54,6 +54,15 @@ var publicUtil = {
                 $iframe.off('load').remove();
             }, 0);
         }).appendTo($body);
+    },
+    "dateFormat" : function (type, date) {
+        if(type == '1'){
+            //日.月.年
+            return date.substring(6,8) + '.' + date.substring(4,6) + '.' + date.substring(0,4);
+        }else if(type == '2'){
+            //月.日  时:分
+            return date.substring(4,6) + '.' + date.substring(6,8) + '  ' + date.substring(8,10) + ':' + date.substring(10,12);
+        }
     }
 };
 
@@ -64,6 +73,7 @@ $(function () {
     //         window.location.href = "login.html";
     //     }
     // }
+
 
 })
 function logout() {
@@ -103,18 +113,24 @@ function ajaxLoad(url,dataParams,type,dataType,doneSucc,doneFail,compeleteSucc){
 
     console.log("请求接口参数："+JSON.stringify(ajaxParamObj));
 
-    if(url.indexOf("store_modal") == -1){
+    if(url.indexOf("store_modal") == -1 && url.indexOf("uploadPic") == -1){
         publicUtil.popLoader();
     }
     // setTimeout(function () {
         $.ajax(ajaxParamObj)
             .done(function(data) {
+                if(data.info == "ERR"){
+                    alert(data.msg);
+                }
                 if(typeof(doneSucc) == "function") {
                     doneSucc(data);
                 }
             })
-            .error(function() {
-                alert("Throws Exception");
+            .error(function(a, b, c) {
+                // console.log(a);
+                // console.log(b);
+                // console.log(c);
+                alert(c);
                 if(typeof(doneFail) == "function") {
                     doneFail();
                 }

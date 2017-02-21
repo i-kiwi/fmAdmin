@@ -34,7 +34,7 @@
             <p>Login in. To see it in action.</p>
             <form class="m-t" role="form">
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Username" id="username" required="">
+                    <input type="email" class="form-control" placeholder="Username" autofocus="autofocus" id="username" required="">
                 </div>
                 <div class="form-group">
                     <input type="password" class="form-control" placeholder="Password" id="password" required="">
@@ -60,7 +60,8 @@
            if($("#username").val() && $("#password").val()){
                 //ajax
                 function suc(data) {
-                    if(data == "1"){
+                    if(data.info == "SUC" && data.item){
+                        sessionStorage.managerName = data.item;
                         sessionStorage.username = $("#username").val();
                         sessionStorage.currentPath = "home";
                         window.location.href = "index.html";
@@ -76,6 +77,16 @@
                 ajaxLoad(localIp+"FruitManager/login.do",param,"post","JSON",suc,null,null);
            }
         }
+
+        $(document).ready(function () {
+
+            document.onkeydown = function (event) {
+                var e = event || window.event || arguments.callee.caller.arguments[0];
+                if (e && e.keyCode == 13) {
+                    login();
+                }
+            };
+        });
     </script>
 </body>
 

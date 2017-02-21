@@ -6,6 +6,17 @@
         width:16%;
         height:70px;
         margin: 7px 10px 7px 0px;
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+    }
+    .delImg{
+        color:#fff;
+        background-color:#000;
+        font-size:15px;
+        height:15px;
+        width:15px;
+        display: none;
+        margin-top:-15px;
     }
     .ibox-title{
         filter:alpha(opacity=0);
@@ -26,6 +37,64 @@
     .disabled {
         pointer-events: none;
     }
+    .fruitUnitDiv{
+        margin-top:8px;
+    }
+    .showImgDiv{
+
+    }
+    .imgWindow{
+        width:100%;
+        height:300px;
+        overflow: hidden;
+    }
+    .imgUl{
+        padding:0px;
+        position: relative;
+    }
+    .imgUl li{
+        height:300px;
+        position: absolute;
+        list-style-type: none;
+    }
+    .imgUl li div{
+        width:100%;
+        height:100%;
+        border:1px solid #e8e9ea;
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+    }
+    .imgControl{
+        width:100%;
+        height:100px;
+        position: relative;
+    }
+    .imgControl i{
+        color:#5bc0de;
+        font-size:18px;
+        line-height:80px;
+        margin:0px auto;
+        position: absolute;
+        cursor:pointer;
+    }
+    .imgControl .fa-chevron-circle-left{
+        left:40px;
+    }
+    .imgControl .fa-chevron-circle-right{
+         right:40px;
+    }
+    .imgControlUl{
+        padding: 0px;
+        margin:0px auto;
+        position: absolute;
+    }
+    .imgControlUl li{
+        list-style-type: none;
+        line-height:100px;
+        margin:0px 5px;
+        width:10px;
+        cursor:pointer;
+    }
 </style>
 
 
@@ -40,40 +109,57 @@
                     <div class="col-md-5 m-t-lg">
 
 
-                        <div class="product-images">
 
-                            <div>
-                                <div class="image-imitation">
-                                    [IMAGE 1]
-                                </div>
+                        <div class="showImgDiv">
+                            <div class="imgWindow">
+                                <ul class="imgUl">
+                                    <li>1</li>
+                                    <li>2</li>
+                                    <li>3</li>
+                                </ul>
                             </div>
-                            <div>
-                                <div class="image-imitation" style="background: url('../img/i2.png') no-repeat center;">
-                                </div>
+                            <div class="imgControl m-t-lg">
+                                <i class="fa fa-chevron-circle-left" data-page="-1"></i>
+                                <ul class="imgControlUl">
+                                    <li class="fa fa-circle" data-page="0"></li>
+                                    <li class="fa fa-circle-o" data-page="1"></li>
+                                    <li class="fa fa-circle-o" data-page="2"></li>
+                                </ul>
+                                <i class="fa fa-chevron-circle-right" data-page="+1"></i>
                             </div>
-                            <div>
-                                <video src="../img/mp4/testMp4.mp4" controls="controls"></video>
-                            </div>
-
-
                         </div>
+
 
                     </div>
                     <div class="col-md-7">
 
                         <h2 class="font-bold m-b-xs">
-                            <span class="editBtn" data-name="name">Desktop publishing software</span>
+                            <span class="fruitName">Desktop publishing software</span>
                         </h2>
-                        <small class="editBtn" data-name="desc">Many desktop publishing packages and web page editors now.</small>
+                        <small class="fruitDesc">Many desktop publishing packages and web page editors now.</small>
                         <hr>
-                        <div>
-                            <h1 class="product-main-price">
+                        <div style="height: 60px; ">
+                            <h1 class="product-main-price pull-left m-r-n-sm">
                                 <i class="fa fa-rmb">&nbsp;</i>
-                                <span class="editBtn" data-name="price">406,602</span>
-                                <s>(405,602)</s>
-                                <small class="text-muted">元&nbsp;/&nbsp;<span class="editBtn" data-name="unit"><b>斤</b></span></small>
-
+                                <span class="fruitPrice">...</span>
+                                <s class="fruitHistoryPrice"></s>
+                                <small class="text-muted">元&nbsp;/&nbsp;<span class=""><b class="staticUnit">斤</b></span></small>
                             </h1>
+                            <h1 class="col-sm-3 pull-left m-l-n-xl">
+                                <div class="input-group fruitUnitDiv pace-inactive">
+                                    <input type="text" class="fruitUnit form-control fa-align-right pull-right" style="width: 60%;" value="个"/>
+                                    <div class="input-group-btn">
+                                        <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button" aria-expanded="false"><span class="caret"></span></button>
+                                        <ul class="dropdown-menu" style="min-width: 30px;">
+                                            <li><a href="#">斤</a></li>
+                                            <li><a href="#">个</a></li>
+                                            <li><a href="#">只</a></li>
+                                            <li><a href="#">坨</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </h1>
+                            <div class="clearfix"></div>
                         </div>
                         <hr>
                         <div>
@@ -81,8 +167,9 @@
                                 <div class="col-md-9">
                                     <div class="row">
                                         <div class="col-md-12 small-pic-group disabled">
-                                            <div class="small-pic pull-left t-border" style="opacity: 1; z-index: 0; background: url('../img/i1.jpg') center">
+                                            <div class="small-pic pull-left t-border" style="opacity: 1; z-index: 0; background-image: url('../img/p6.jpg')">
                                                 <div class="ibox-title"></div>
+                                                <i class="delImg fa fa-times"></i>
                                             </div>
 
                                             <div class="small-pic pull-left t-border" style="opacity: 1; z-index: 0;">
@@ -116,13 +203,13 @@
                         <div class="row">
                             <div class="well col-lg-5 m-l-md metrics">
                                 <h5>剩余</h5>
-                                <h2><span>3210</span>&nbsp;<span>斤</span><i class="fa fa-edit pull-right"></i></h2>
+                                <h2><span class="remaining">3210</span>&nbsp;<span class="staticUnit2">斤</span><i class="fa fa-edit pull-right"></i></h2>
 
                                 <div class="progress progress-small">
-                                    <div style="width: 68%;" class="progress-bar"></div>
+                                    <div class="progress-bar" style="width: 100%;"></div>
                                 </div>
 
-                                <div class="m-t-n-sm small">上次添加时间 1月16日  4:32 pm.</div>
+                                <div class="m-t-n-sm small lastInStoreInfo">上次添加时间 1.16 4:32 pm. 总量 4000</div>
                             </div>
                             <div class="well col-lg-5 m-l-md metrics">
                                 <h5>月销图</h5>
@@ -256,13 +343,103 @@
 
 <script>
 
-    $(document).ready(function(){
-//        sessionStorage.currentPathName = "花村苹果";
-//        sessionStorage.parentPathName = "库存";
+    var imgWidth = $(".imgWindow").width();
+    var pageIndex = 0;
+    var imgCount = 2;
+    var fillData;
+    function fillFruitDetail(data) {
+        fillData = data;
+        if(data.info == "SUC"){
 
-        $(".editBtn").click(function(){
-            alert($(this).attr("data-name"));
+//            alert(data.item);
+            var json = JSON.parse(data.item);
+            var imgList = eval(json.IMG_LIST);
+
+            $(".fruitName").text(json.NAME);
+            $(".fruitDesc").text(json.NOTE);
+            $(".fruitPrice").text(json.PRICE);
+            $(".fruitHistoryPrice").text(json.HISTORY_PRICE == 0 ? "" : "("+json.HISTORY_PRICE+")");
+            $(".staticUnit, .staticUnit2").text(json.UNIT_NAME);
+            $(".remaining").text(json.STORE);
+            $(".lastInStoreInfo").text("上次添加时间 " + publicUtil.dateFormat('2', json.LAST_IN_STORE_TIME) + ". 总量 " + json.HISTORY_STORE);
+
+
+
+            var imgHtmlStr = "";
+            for(var i = 0; i < imgList.length; i ++){
+                imgHtmlStr += '<li style="left:'+(imgWidth * i)+'px;"><div style="background-image: url('+imgList[i]+');"></div></li>';
+            }
+            $(".imgUl").html(imgHtmlStr);
+            $(".imgUl li").css("width",imgWidth+"px");
+
+
+
+            var imgControlUlWidth = $(".imgControlUl").width();
+            $(".imgControlUl").css("left",(imgWidth - imgControlUlWidth) / 2 +"px");
+
+
+            setTimeout(function () {
+                $(".progress .progress-bar").attr("style","width:" + (json.STORE / json.HISTORY_STORE * 100) + "%");
+            },500);
+
+
+        }
+    }
+    $(document).ready(function(){
+        var fruitId = sessionStorage.currentFruitId;
+
+        var param = {
+            "param":JSON.stringify({"fruitId":fruitId})
+        }
+        ajaxLoad(localIp+"FruitManager/getFruitDetail.do",param,"post","JSON",fillFruitDetail,null,null);
+
+
+
+
+
+
+
+        $('.fruitUnit').parent().children(".input-group-btn").children("ul").children("li").click(function(){
+            $('.fruitUnit').val($(this).children().text());
         });
+
+
+
+
+
+
+//        $(".editBtn").click(function(){
+//            alert($(this).attr("data-name"));
+//        });
+
+
+        $(".imgControl .fa").click(function () {
+            var page = $(this).attr("data-page");
+            if(page == "-1"){
+                if(pageIndex == 0){
+                    pageIndex = imgCount;
+                }else{
+                    pageIndex--;
+                }
+            }else if(page == "+1"){
+                if(pageIndex == imgCount){
+                    pageIndex = 0;
+                }else{
+                    pageIndex++;
+                }
+            }else{
+                pageIndex = page;
+            }
+            refreshImgShow();
+        });
+        function refreshImgShow() {
+            $(".imgControlUl li:not("+pageIndex+")").removeClass("fa-circle");
+            $(".imgControlUl li:not("+pageIndex+")").addClass("fa-circle-o");
+            $(".imgControlUl li:eq("+pageIndex+")").removeClass("fa-circle-o");
+            $(".imgControlUl li:eq("+pageIndex+")").addClass("fa-circle");
+            $(".imgUl").animate({left:(imgWidth * pageIndex * -1)+"px"},200);
+        }
+
 
 
         $('.product-images').slick({
@@ -275,7 +452,7 @@
             WinMove();
 
 
-            $("#sparkline").sparkline([74, 43, 23, 55, 54, 32, 24, 12], {
+            $("#sparkline").sparkline([3, 4, 2, 3, 5, 8, 7, 9], {
                 type: 'line',
                 width: '100%',
                 height: '60',
@@ -297,7 +474,6 @@
 
     });
 
-
     var smallPicMoveFlag = false;
     function editSmallPic(btnObj) {
         smallPicMoveFlag = !smallPicMoveFlag;
@@ -305,14 +481,49 @@
             $(".small-pic-group").removeClass("disabled");
             $('.small-pic').addClass('animated');
             $('.small-pic').addClass('tada2');
+            $(".delImg").attr("style","display:block");
             $(".editLabel").text("Save");
             btnObj.removeClass("btn-white").addClass("btn-success");
+
+            $(".fruitName").html("<input style='width:400px;' type='text' value='"+ $(".fruitName").text() +"' />");
+            $(".fruitDesc").html("<input style='width:600px;' type='text' value='"+ $(".fruitDesc").text() +"' />");
+            $(".fruitPrice").html("<input style='width:100px;' type='text' value='"+ $(".fruitPrice").text() +"' />");
+            $(".staticUnit").addClass("pace-inactive");
+            $(".fruitUnitDiv").removeClass("pace-inactive");
+            $(".fruitUnit").val($(".staticUnit").text());
         }else{
+            fillFruitDetail(fillData);
             $(".small-pic-group").addClass("disabled");
             $('.small-pic').removeClass('animated').removeClass('tada2');
+            $(".delImg").attr("style","display:none");
             $(".editLabel").text("Edit");
             btnObj.removeClass("btn-success").addClass("btn-white");
+
+            $(".fruitName").html($(".fruitName").children().val());
+            $(".fruitDesc").html($(".fruitDesc").children().val());
+            $(".fruitPrice").html($(".fruitPrice").children().val());
+            $(".staticUnit").removeClass("pace-inactive");
+            $(".fruitUnitDiv").addClass("pace-inactive");
+            $(".staticUnit").text($(".fruitUnit").val());
+            $(".staticUnit2").text($(".fruitUnit").val());
         }
+        $(".delImg").click(function () {
+            var smallPicDiv = $(this).parent();
+            swal({
+                type:'info',
+                title: "",
+                text: "是否移除此图片？",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "确定",
+                cancelButtonText: "取消",
+                closeOnConfirm: true,
+            }, function (isOk) {
+                if(isOk){
+                    smallPicDiv.remove();
+                }
+            });
+        });
     }
 
     function uploadPic() {

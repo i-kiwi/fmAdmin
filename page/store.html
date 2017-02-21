@@ -142,11 +142,11 @@
                 var list = eval(data.item);
                 for (var i = 0; i < list.length; i++) {
                     var fruit = list[i];
-                    console.log(fruit.IMG_JSON);
+                    var imgList = eval(fruit.IMG_LIST);
                     var str = '<div class="col-md-3 '+(fruit.STATE == '1' || fruit.STORE <= 0 ? 'store-lost' : '')+'">\
                         <div class="ibox">\
                             <div class="product-box ibox-content">\
-                                <div class="product-imitation" style="background-image:url('+JSON.parse(fruit.IMG_JSON).n1+');">\
+                                <div class="product-imitation" style="background-image:url(imgList[0]);">\
                                 </div>\
                                 <div class="product-desc">\
                                     <input type="hidden" value="'+fruit.ID+'">\
@@ -163,7 +163,7 @@
                                         <a class="btn btn-xs btn-outline btn-primary">详细 <i class="fa fa-long-arrow-right"></i> </a>\
                                     </div>\
                                     <div>\
-                                        <small class="pull-right m-t-n"><i class="fa fa-edit"> '+fruit.CHANGE_TIME+'</i></small>\
+                                        <small class="pull-right m-t-n"><i class="fa fa-edit"> '+ publicUtil.dateFormat('1', fruit.CHANGE_TIME) +'</i></small>\
                                     </div>\
                                 </div>\
                             </div>\
@@ -175,8 +175,9 @@
                 $(".store-list a").click(function () {
 //                    alert($(this).parent().parent().children("input").val());
 
-                    sessionStorage.parentPathName = "KK"
-                    sessionStorage.currentPathName = "apple";
+                    sessionStorage.currentFruitId = $(this).parent().parent().children("input").val();
+                    sessionStorage.parentPathName = "库存"
+                    sessionStorage.currentPathName = $(this).parent().parent().children("div").children(".product-name").text();
                     jump("store_detail", "store");
                 });
             }

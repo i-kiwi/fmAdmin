@@ -319,6 +319,8 @@
                 }
             });
 
+            $(".welcome-message").text("Welcome back, " + sessionStorage.managerName);
+
             /*动画优化*/
             $.each($("#side-menu li"),function(){
                 if($(this).children("input").val() == sessionStorage.currentPath){
