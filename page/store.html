@@ -133,6 +133,7 @@
     $(document).ready(function () {
         sessionStorage.currentPathName = "库存";
         sessionStorage.parentPathName = "";
+        sessionStorage.currentFruitId = "";
 
 
         function fillFruitList(data){
@@ -142,11 +143,11 @@
                 var list = eval(data.item);
                 for (var i = 0; i < list.length; i++) {
                     var fruit = list[i];
-                    var imgList = eval(fruit.IMG_LIST);
+                    var imgList = fruit.IMG_LIST.split(",");
                     var str = '<div class="col-md-3 '+(fruit.STATE == '1' || fruit.STORE <= 0 ? 'store-lost' : '')+'">\
                         <div class="ibox">\
                             <div class="product-box ibox-content">\
-                                <div class="product-imitation" style="background-image:url(imgList[0]);">\
+                                <div class="product-imitation" style="background-image:url('+imgList[0]+');">\
                                 </div>\
                                 <div class="product-desc">\
                                     <input type="hidden" value="'+fruit.ID+'">\
@@ -177,7 +178,6 @@
 
                     sessionStorage.currentFruitId = $(this).parent().parent().children("input").val();
                     sessionStorage.parentPathName = "库存"
-                    sessionStorage.currentPathName = $(this).parent().parent().children("div").children(".product-name").text();
                     jump("store_detail", "store");
                 });
             }

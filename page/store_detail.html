@@ -58,7 +58,7 @@
         width:100%;
         height:100%;
         border:1px solid #e8e9ea;
-        background-size: 100% auto;
+        background-size:auto 100%;
         background-repeat: no-repeat;
     }
     .imgControl{
@@ -140,18 +140,23 @@
                                 <i class="fa fa-rmb">&nbsp;</i>
                                 <span class="fruitPrice">...</span>
                                 <s class="fruitHistoryPrice"></s>
-                                <small class="text-muted">元&nbsp;/&nbsp;<span class=""><b class="staticUnit">斤</b></span></small>
+                                <small class="text-muted">元&nbsp;/&nbsp;
+                                    <span class="">
+                                        <b class="staticUnit">斤</b>
+                                    </span>
+                                </small>
                             </h1>
                             <h1 class="col-sm-3 pull-left m-l-n-xl">
                                 <div class="input-group fruitUnitDiv pace-inactive">
                                     <input type="text" class="fruitUnit form-control fa-align-right pull-right" style="width: 60%;" value="个"/>
+                                    <input type="hidden" class="hiddenUnit" value="01"/>
                                     <div class="input-group-btn">
                                         <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button" aria-expanded="false"><span class="caret"></span></button>
                                         <ul class="dropdown-menu" style="min-width: 30px;">
-                                            <li><a href="#">斤</a></li>
-                                            <li><a href="#">个</a></li>
-                                            <li><a href="#">只</a></li>
-                                            <li><a href="#">坨</a></li>
+                                            <li><a href="#">个</a><input type="hidden" value="01"/></li>
+                                            <li><a href="#">斤</a><input type="hidden" value="02"/></li>
+                                            <li><a href="#">只</a><input type="hidden" value="03"/></li>
+                                            <li><a href="#">坨</a><input type="hidden" value="04"/></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -168,28 +173,12 @@
                                                 <div class="ibox-title"></div>
                                                 <i class="delImg fa fa-times"></i>
                                             </div>
-
-                                            <div class="small-pic pull-left t-border" style="opacity: 1; z-index: 0;">
-                                                <div class="ibox-title"></div>
-                                            </div>
-
-                                            <div class="small-pic pull-left t-border" style="opacity: 1; z-index: 0;">
-                                                <div class="ibox-title"></div>
-                                            </div>
-
-                                            <div class="small-pic pull-left t-border" style="opacity: 1; z-index: 0;">
-                                                <div class="ibox-title"></div>
-                                            </div>
-
-                                            <div class="small-pic pull-left t-border" style="opacity: 1; z-index: 0;">
-                                                <div class="ibox-title"></div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-3 btn-group">
-                                    <button class="btn btn-white btn-sm" data-name="editPic" onclick="editSmallPic($(this))"><i class="fa fa-edit"></i>&nbsp;<span class="editLabel">Edit</span></button>
-                                    <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal" onclick="uploadPic()"><i class="fa fa-star"></i> Add </button>
+                                    <button class="btn btn-white btn-sm" data-name="editPic" onclick="editSmallPic($(this))"><i class="fa fa-edit"></i>&nbsp;<span class="editLabel">编辑</span></button>
+                                    <button class="addImgBtn btn btn-info btn-sm" data-toggle="modal" data-target="#myModal" onclick="uploadPic()"><i class="fa fa-star"></i> 添加 </button>
                                 </div>
                             </div>
                         </div>
@@ -330,7 +319,6 @@
 </div>
 
 <!-- Custom and plugin javascript -->
-<script src="../js/inspinia.js"></script>
 <script src="../js/plugins/pace/pace.min.js"></script>
 
 <!-- slick carousel-->
@@ -353,9 +341,11 @@
         fillData = data;
         if(data.info == "SUC"){
 
-//            alert(data.item);
             var json = JSON.parse(data.item);
-            var imgList = eval(json.IMG_LIST);
+            var imgList = json.IMG_LIST.split(",");
+            sessionStorage.currentPathName = json.NAME;
+            fillTitle(sessionStorage.currentPathName, sessionStorage.parentPathName);
+
 
             $(".fruitName").text(json.NAME);
             $(".fruitDesc").text(json.NOTE);
@@ -367,12 +357,22 @@
 
 
 
+            imgCount = imgList.length - 1;
             var imgHtmlStr = "";
+            var imgControlHtmlStr = "";
+            var smallPicHtmlStr = "";
             for(var i = 0; i < imgList.length; i ++){
                 imgHtmlStr += '<li style="left:'+(imgWidth * i)+'px;"><div style="background-image: url('+imgList[i]+');"></div></li>';
+                imgControlHtmlStr += '<li class="fa fa-circle'+(i == 0 ? '' : '-o')+'" data-page="'+i+'"></li>';
+                smallPicHtmlStr += '<div class="small-pic pull-left t-border" style="opacity: 1; z-index: 0; background-image: url('+imgList[i]+')">\
+                <div class="ibox-title"></div>\
+                    <i class="delImg fa fa-times"></i>\
+                    </div>'
             }
             $(".imgUl").html(imgHtmlStr);
             $(".imgUl li").css("width",imgWidth+"px");
+            $(".imgControlUl").html(imgControlHtmlStr);
+            $(".small-pic-group").html(smallPicHtmlStr);
 
 
 
@@ -384,7 +384,43 @@
                 $(".progress .progress-bar").attr("style","width:" + (json.STORE / json.HISTORY_STORE * 100) + "%");
             },500);
 
+            $(".imgControl .fa").click(function () {
+                var page = $(this).attr("data-page");
+                if(page == "-1"){
+                    if(pageIndex == 0){
+                        pageIndex = imgCount;
+                    }else{
+                        pageIndex--;
+                    }
+                }else if(page == "+1"){
+                    if(pageIndex == imgCount){
+                        pageIndex = 0;
+                    }else{
+                        pageIndex++;
+                    }
+                }else{
+                    pageIndex = page;
+                }
+                refreshImgShow();
+            });
+            function refreshImgShow() {
+                $(".imgControlUl li:not("+pageIndex+")").removeClass("fa-circle");
+                $(".imgControlUl li:not("+pageIndex+")").addClass("fa-circle-o");
+                $(".imgControlUl li:eq("+pageIndex+")").removeClass("fa-circle-o");
+                $(".imgControlUl li:eq("+pageIndex+")").addClass("fa-circle");
+                $(".imgUl").animate({left:(imgWidth * pageIndex * -1)+"px"},200);
+            }
 
+            _name = $(".fruitName").text();
+            _note = $(".fruitDesc").text();
+            _price = $(".fruitPrice").text();
+            _unit = $(".staticUnit").text();
+            _unitId = $(".staticHiddenUnit").val();
+            $.each($(".small-pic-group").children("div"), function () {
+                var tempImg = this.style.backgroundImage;
+                tempImg = tempImg.substring(4, tempImg.length - 1)
+                _imgList += _imgList.length == 0 ? tempImg : "," + tempImg;
+            });
         }
     }
     $(document).ready(function(){
@@ -403,44 +439,9 @@
 
         $('.fruitUnit').parent().children(".input-group-btn").children("ul").children("li").click(function(){
             $('.fruitUnit').val($(this).children().text());
+            $(".hiddenUnit").val($(this).children("input").val());
         });
 
-
-
-
-
-
-//        $(".editBtn").click(function(){
-//            alert($(this).attr("data-name"));
-//        });
-
-
-        $(".imgControl .fa").click(function () {
-            var page = $(this).attr("data-page");
-            if(page == "-1"){
-                if(pageIndex == 0){
-                    pageIndex = imgCount;
-                }else{
-                    pageIndex--;
-                }
-            }else if(page == "+1"){
-                if(pageIndex == imgCount){
-                    pageIndex = 0;
-                }else{
-                    pageIndex++;
-                }
-            }else{
-                pageIndex = page;
-            }
-            refreshImgShow();
-        });
-        function refreshImgShow() {
-            $(".imgControlUl li:not("+pageIndex+")").removeClass("fa-circle");
-            $(".imgControlUl li:not("+pageIndex+")").addClass("fa-circle-o");
-            $(".imgControlUl li:eq("+pageIndex+")").removeClass("fa-circle-o");
-            $(".imgControlUl li:eq("+pageIndex+")").addClass("fa-circle");
-            $(".imgUl").animate({left:(imgWidth * pageIndex * -1)+"px"},200);
-        }
 
 
 
@@ -476,15 +477,16 @@
 
     });
 
-    var smallPicMoveFlag = false;
+    var smallPicMoveFlag = true;
+    var _name, _note, _price, _unit, _unitId, _imgList = "";
     function editSmallPic(btnObj) {
-        smallPicMoveFlag = !smallPicMoveFlag;
+
         if(smallPicMoveFlag){
             $(".small-pic-group").removeClass("disabled");
             $('.small-pic').addClass('animated');
             $('.small-pic').addClass('tada2');
             $(".delImg").attr("style","display:block");
-            $(".editLabel").text("Save");
+            $(".editLabel").text("保存");
             btnObj.removeClass("btn-white").addClass("btn-success");
 
             $(".fruitName").html("<input style='width:400px;' type='text' value='"+ $(".fruitName").text() +"' />");
@@ -493,12 +495,15 @@
             $(".staticUnit").addClass("pace-inactive");
             $(".fruitUnitDiv").removeClass("pace-inactive");
             $(".fruitUnit").val($(".staticUnit").text());
+            $(".addImgBtn").attr("disabled","disabled");
         }else{
-            fillFruitDetail(fillData);
+            if(isNaN($(".fruitPrice").children("input").val())){
+                return;
+            }
             $(".small-pic-group").addClass("disabled");
             $('.small-pic').removeClass('animated').removeClass('tada2');
             $(".delImg").attr("style","display:none");
-            $(".editLabel").text("Edit");
+            $(".editLabel").text("编辑");
             btnObj.removeClass("btn-success").addClass("btn-white");
 
             $(".fruitName").html($(".fruitName").children().val());
@@ -508,6 +513,7 @@
             $(".fruitUnitDiv").addClass("pace-inactive");
             $(".staticUnit").text($(".fruitUnit").val());
             $(".staticUnit2").text($(".fruitUnit").val());
+            $(".addImgBtn").removeAttr("disabled");
         }
         $(".delImg").click(function () {
             var smallPicDiv = $(this).parent();
@@ -526,6 +532,87 @@
                 }
             });
         });
+
+
+        if(!smallPicMoveFlag){
+            var param = {}
+            if(_name != $(".fruitName").text()){
+                param["name"] = $(".fruitName").text();
+            }
+            if(_note != $(".fruitDesc").text()){
+                param["note"] = $(".fruitDesc").text();
+            }
+            if(_price != $(".fruitPrice").text()){
+                param["price"] = $(".fruitPrice").text();
+            }
+            if(_unit != $(".staticUnit").text()){
+                param["unit"] = $(".staticUnit").text();
+                param["unitId"] = $(".hiddenUnit").val();
+            }
+            var tempImgList = "";
+            $.each($(".small-pic-group").children("div"), function () {
+                var tempImg = this.style.backgroundImage;
+                tempImg = tempImg.substring(4, tempImg.length - 1)
+                tempImgList += tempImgList.length == 0 ? tempImg : "," + tempImg;
+            });
+            if(tempImgList != _imgList){
+                param["imgList"] = tempImgList;
+            }
+            if(!$.isEmptyObject(param)){
+                swal({
+                    title: "确认修改?",
+                    text: changeInfo(param),
+                    type: "info",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "确认",
+                    cancelButtonText: "取消",
+                    closeOnConfirm: false,
+                    closeOnCancel: false },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        function refreshStore() {
+                            swal({
+                                title:"完成!",
+                                text:"已修改",
+                                type:"success",
+                                timer:1000
+                            });
+                            jump("store_detail", "store");
+                        }
+                        param["id"] = sessionStorage.currentFruitId;
+                        var par = {
+                            "param":JSON.stringify(param)
+                        }
+                        ajaxLoad(localIp+"FruitManager/saveFruitInfo.do",par,"post","JSON",refreshStore,null,null);
+
+                    } else {
+                        swal({
+                            title:"取消!",
+                            text:"放弃修改 :)",
+                            type:"error",
+                            timer:1000
+                        });
+                        $(".fruitName").text(_name);
+                        $(".fruitDesc").text(_note);
+                        $(".fruitPrice").text(_price);
+                        $(".staticUnit").text(_unit);
+
+                        var smallPicHtmlStr = "";
+                        var imgList = _imgList.split(",");
+                        for(var i = 0; i < imgList.length; i ++){
+                                    smallPicHtmlStr += '<div class="small-pic pull-left t-border" style="opacity: 1; z-index: 0; background-image: url('+imgList[i]+')">\
+                        <div class="ibox-title"></div>\
+                            <i class="delImg fa fa-times"></i>\
+                            </div>'
+                        }
+                        $(".small-pic-group").html(smallPicHtmlStr);
+                    }
+                });
+            }
+
+        }
+        smallPicMoveFlag = !smallPicMoveFlag;
     }
 
     function uploadPic() {
@@ -533,6 +620,17 @@
         function fillModal(data){
             $("#myModal").html(data);
         }
+    }
+    function changeInfo(json){
+        var str = "";
+        for(var key in json){
+            str += key == 'name' ? '名称 → 「'+json[key]+'」 \n': '';
+            str += key == 'note' ? '描述 → 「'+json[key]+'」 \n': '';
+            str += key == 'price' ? '单价 → 「'+json[key]+'」 \n': '';
+            str += key == 'unit' ? '单位 → 「'+json[key]+'」 \n': '';
+            str += key == 'imgList' ? '更改图片': '';
+        }
+        return str;
     }
 
 </script>

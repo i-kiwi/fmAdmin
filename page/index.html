@@ -112,7 +112,7 @@
         <div id="page-wrapper" class="gray-bg">
         <div class="row border-bottom">
         <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header">
+        <div class="navbar-header navBtn">
             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
         </div>
             <ul class="nav navbar-top-links navbar-right">
@@ -281,7 +281,6 @@
 
 
 
-
     <script>
         function fillContent(data) {
 
@@ -308,7 +307,8 @@
         }
         function jump(targetPath, navPath) {
             ajaxLoad(localIp+"fmAdmin/page/"+targetPath+".html","","post","text",fillContent,null,awayFunc);
-            sessionStorage.currentPath = navPath ? navPath : targetPath;
+            sessionStorage.currentPath = targetPath;
+            sessionStorage.navPath = navPath ? navPath : targetPath;
         }
         $(document).ready(function () {
             $("#side-menu li").click(function(){
@@ -322,14 +322,18 @@
             $(".welcome-message").text("Welcome back, " + sessionStorage.managerName);
 
             /*动画优化*/
+            $("#side-menu li").removeClass("active");
+            if(!sessionStorage.navPath){
+                sessionStorage.navPath = 'home';
+            }
             $.each($("#side-menu li"),function(){
-                if($(this).children("input").val() == sessionStorage.currentPath){
+                if($(this).children("input").val() == sessionStorage.navPath){
                     $(this).addClass("active");
                     $(this).parent(".nav-second-level").addClass("in").parent("li").addClass("active");
                 }
             })
 
-            jump(sessionStorage.currentPath?sessionStorage.currentPath:"home");
+            jump(sessionStorage.currentPath?sessionStorage.currentPath:"home", sessionStorage.navPath);
         });
 
     </script>
