@@ -152,11 +152,8 @@
                                     <input type="hidden" class="hiddenUnit" value="01"/>
                                     <div class="input-group-btn">
                                         <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button" aria-expanded="false"><span class="caret"></span></button>
-                                        <ul class="dropdown-menu" style="min-width: 30px;">
+                                        <ul class="dropdown-menu unitMenu" style="min-width: 30px;">
                                             <li><a href="#">个</a><input type="hidden" value="01"/></li>
-                                            <li><a href="#">斤</a><input type="hidden" value="02"/></li>
-                                            <li><a href="#">只</a><input type="hidden" value="03"/></li>
-                                            <li><a href="#">坨</a><input type="hidden" value="04"/></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -353,7 +350,7 @@
             $(".fruitHistoryPrice").text(json.HISTORY_PRICE == 0 ? "" : "("+json.HISTORY_PRICE+")");
             $(".staticUnit, .staticUnit2").text(json.UNIT_NAME);
             $(".remaining").text(json.STORE);
-            $(".lastInStoreInfo").text("上次添加时间 " + publicUtil.dateFormat('2', json.LAST_IN_STORE_TIME) + ". 总量 " + json.HISTORY_STORE);
+            $(".lastInStoreInfo").text("上次添加时间 " + publicUtil.dateFormat('2', json.LAST_IN_STORE_TIME) + "  总量 " + json.HISTORY_STORE);
 
 
 
@@ -431,7 +428,7 @@
         }
         ajaxLoad(localIp+"FruitManager/getFruitDetail.do",param,"post","JSON",fillFruitDetail,null,null);
 
-
+        initUnitMenu();
 
 
 
@@ -441,8 +438,7 @@
             $('.fruitUnit').val($(this).children().text());
             $(".hiddenUnit").val($(this).children("input").val());
         });
-
-
+        $(".imgWindow").attr("style","max-width:"+$(".imgWindow").width()+"px");
 
 
         $('.product-images').slick({
@@ -497,7 +493,7 @@
             $(".fruitUnit").val($(".staticUnit").text());
             $(".addImgBtn").attr("disabled","disabled");
         }else{
-            if(isNaN($(".fruitPrice").children("input").val())){
+            if(isNaN($(".fruitPrice").children("input").val()) || $(".fruitPrice").children("input").val().trim().length <= 0){
                 return;
             }
             $(".small-pic-group").addClass("disabled");

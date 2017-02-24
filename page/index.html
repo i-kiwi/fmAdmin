@@ -334,6 +334,16 @@
             })
 
             jump(sessionStorage.currentPath?sessionStorage.currentPath:"home", sessionStorage.navPath);
+
+
+            ajaxLoad(localIp+"FruitManager/getUnitMenu.do",'',"post","JSON",function (data) {
+                if(data.info == "SUC"){
+                    sessionStorage.unitMenuJson = data.item;
+                }
+            },null,null);
+
+
+
         });
 
     </script>

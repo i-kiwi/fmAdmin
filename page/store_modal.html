@@ -2,7 +2,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <h4 class="modal-title">Modal title</h4>
+            <h4 class="modal-title">创建新产品</h4>
             <small class="font-bold">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>
         </div>
         <form class="form-horizontal">
@@ -33,11 +33,8 @@
                             <input type="text" class="fruitUnit form-control fa-align-right pull-right" style="width: 60%;" value="斤"/>
                             <div class="input-group-btn">
                                 <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button" aria-expanded="false"><span class="caret"></span></button>
-                                <ul class="dropdown-menu" style="min-width: 30px;">
-                                    <li><a href="#">斤</a></li>
+                                <ul class="dropdown-menu unitMenu" style="min-width: 30px;">
                                     <li><a href="#">个</a></li>
-                                    <li><a href="#">只</a></li>
-                                    <li><a href="#">坨</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -70,23 +67,23 @@
 
 <script>
     $(document).ready(function(){
-        $('.fruitUnit').parent().children(".input-group-btn").children("ul").children("li").click(function(){
-            $('.fruitUnit').val($(this).children().text());
+        initUnitMenu();
+        $(".unitMenu").children("li").click(function(){
+            $('.fruitUnit').val($(this).children("a").text());
         });
 
         $('#saveBtn').click(function(){
             $("#myModal").modal("hide");
 
-            sessionStorage.parentPathName = "aslj"
-            sessionStorage.currentPathName = "apple";
-            fillTitle(sessionStorage.currentPathName, sessionStorage.parentPathName);
+//            sessionStorage.parentPathName = "aslj"
+//            sessionStorage.currentPathName = "apple";
+//            fillTitle(sessionStorage.currentPathName, sessionStorage.parentPathName);
             jump("store_detail", "store");
-
             swal({
                 title: "Good job!",
                 text: "You clicked the button!",
                 type: "success",
-                timer:2000
+                timer:1000
             });
         });
     });

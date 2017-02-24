@@ -146,6 +146,15 @@ function ajaxLoad(url,dataParams,type,dataType,doneSucc,doneFail,compeleteSucc){
 
 }
 
+function initUnitMenu() {
+    var unitMenuJson = sessionStorage.unitMenuJson;
+    var unitMenuHtml = "";
+    $.each(eval(unitMenuJson), function () {
+        unitMenuHtml += '<li><a href="#">' + this.UNIT_NAME + '</a><input type="hidden" value="' + this.ID + '"/></li>'
+    });
+    $(".unitMenu").html(unitMenuHtml);
+}
+
 /*------------encoding------------*/
 var encrypt = {encrypt:function(){}};
 function tkEncoding() {
